@@ -1,0 +1,42 @@
+{
+	"data_version": "3.1",
+	"cve_id":"CVE-YYYY-XXXXXX",
+	"products": [
+      {
+        "data_version": "3.1",
+        "vendor_name": "string",
+        "product": [
+          {
+            "product_name": "string",
+            "version": "string",
+            "affects": "string =/>/</<=/>=/!"
+          }
+        ]
+      }
+    ],
+	"problem_types":[
+		{
+			"data_version":"3.1",
+			"description":[
+				{
+					"lang":"string ISO 639-2",
+					"value":"string description of problem_type"
+				}
+			]
+		}
+	],
+	"references":[
+		{
+			"url":"string for url location",
+			"name":"string Name of reference i.e. if advisory has name",
+			"publish_date":"DATE-TIMESTAMP of reference release to public"
+		}
+	],
+	"description":[
+		{
+			"data_version":"3.1",
+			"lang":"string ISO 639-2",
+			"value":"string description of vulnerability"
+		}
+	]
+}
