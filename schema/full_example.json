@@ -118,7 +118,7 @@
 		}
 	],
 	"source":{
-		"data_version":"DATE-TIMESTAMP",
+		"data_version":"3.1",
 		"discovered_by":"name of discover",
 		"discovered_with":"name of parties involved",
 		"verification":"string",
