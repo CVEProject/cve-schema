@@ -76,6 +76,34 @@
 										},
 										"affects":{
 											"type":"string"
+										},
+										"cpe":{
+											"type":"array",
+											"items":{
+												"type":"object",
+												"properties":{
+													"data_version":{
+														"type":"string"
+													},
+													"cpe_value":{
+														"type":"string"
+													}
+												}
+											}
+										},
+										"swid":{
+											"type":"array",
+											"items":{
+												"type":"object",
+												"properties":{
+													"data_version":{
+														"type":"string"
+													},
+													"swid_value":{
+														"type":"string"
+													}
+												}
+											}
 										}
 									},"required": ["product_name","version"]
 								}
@@ -240,16 +268,19 @@
 					}
 				},
 				"work_around":{
-					"type":"object",
-					"properties":{
-						"data_version":{
-							"type":"string"
-						},
-						"lang":{
-							"type":"string"
-						},
-						"value":{
-							"type":"string"
+					"type":"array",
+					"items":{
+						"type":"object",
+						"properties":{
+							"data_version":{
+								"type":"string"
+							},
+							"lang":{
+								"type":"string"
+							},
+							"value":{
+								"type":"string"
+							}
 						}
 					}
 				},
@@ -349,7 +380,18 @@
       						"role":{
       							"type":"array",
       							"items":{
-      								"type":"string"
+      								"type":"object",
+      								"properties":{
+      									"discoverer":{
+      										"type":"string"
+      									},
+      									"research_assist":{
+      										"type":"string"
+      									},
+      									"exploit_code":{
+      										"type":"string"
+      									}
+      								}
       							}
       						}
       					}

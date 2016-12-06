@@ -10,11 +10,13 @@
 	"assigner": "Assigner id String",
 	"state":"string of state of CVE",
 	"replaced_by":"string replace by data",
-	"title":{
-		"data_version":"3.1",
-		"lang":"string ISO 639-2",
-		"value":"string short title of issue"
-	},
+	"title":[
+		{
+			"data_version":"3.1",
+			"lang":"string ISO 639-2",
+			"value":"string short title of issue"
+		}
+	],
 	"products": [
       {
         "data_version": "3.1",
@@ -23,7 +25,19 @@
           {
             "product_name": "string",
             "version": "string",
-            "affects": "string =/>/</<=/>=/!"
+            "affects": "string =/>/</<=/>=/!",
+            "cpe":[
+            	{
+            		"data_version":"3.1",
+            		"cpe_value":"string"
+            	}
+            ],
+            "swid":[
+            	{
+            		"data_version":"3.1",
+            		"swid_value":"string"
+            	}
+            ]
           }
         ]
       }
@@ -96,11 +110,13 @@
 		"lang":"string ISO 639-2",
 		"value":"string description of issue"
 	},
-	"work_around":{
-		"data_version":"3.1",
-		"lang":"string ISO 639-2",
-		"value":"string description of issue"
-	},
+	"work_around":[
+		{
+			"data_version":"3.1",
+			"lang":"string ISO 639-2",
+			"value":"string description of issue"
+		}
+	],
 	"time_line":[
 		{
 			"data_version":"3.1",
@@ -140,7 +156,13 @@
 		{
 			"data_version":"3.1",
 			"id":"string to identify person recieving credit",
-			"role":"string describing role of person"
+			"role":[
+				{
+					"discoverer":"string",
+					"research_assist":"string",
+					"exploit_code":"string"
+				}
+			]
 		}
 	],
 	"impact_metrics":{	

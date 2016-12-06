@@ -27,9 +27,7 @@
 	],
 	"references":[
 		{
-			"url":"string for url location",
-			"name":"string Name of reference i.e. if advisory has name",
-			"publish_date":"DATE-TIMESTAMP of reference release to public"
+			"url":"string for url location"
 		}
 	],
 	"description":[
