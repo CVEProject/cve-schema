@@ -40,9 +40,6 @@
       				"items":{
       					"type":"object",
       					"properties":{
-      						"data_version":{
-      							"type":"string"
-      						},
       						"lang":{
       							"type":"string"
       						},
@@ -57,9 +54,6 @@
 					"items":{
 						"type":"object",
 						"properties":{
-							"data_version":{
-								"type":"string"
-							},
 							"vendor_name":{
 								"type":"string"
 							},
@@ -82,9 +76,6 @@
 											"items":{
 												"type":"object",
 												"properties":{
-													"data_version":{
-														"type":"string"
-													},
 													"cpe_value":{
 														"type":"string"
 													}
@@ -96,9 +87,6 @@
 											"items":{
 												"type":"object",
 												"properties":{
-													"data_version":{
-														"type":"string"
-													},
 													"swid_value":{
 														"type":"string"
 													}
@@ -116,9 +104,6 @@
         			"items": {
         				"type":"object",
         				"properties":{
-        					"data_version":{
-        						"type":"string"
-        					},
               				"description": {
                 				"type": "array",
                 				"items":{
@@ -170,9 +155,6 @@
         			"items":{
         				"type":"object",
         				"properties":{
-        					"data_version":{
-        						"type":"string"
-        					},
         					"lang":{
         						"type":"string"
         					},
@@ -256,9 +238,6 @@
 				"exploitation":{
 					"type":"object",
 					"properties":{
-						"data_version":{
-							"type":"string"
-						},
 						"lang":{
 							"type":"string"
 						},
@@ -272,9 +251,6 @@
 					"items":{
 						"type":"object",
 						"properties":{
-							"data_version":{
-								"type":"string"
-							},
 							"lang":{
 								"type":"string"
 							},
@@ -289,9 +265,6 @@
 					"items":{
 						"type":"object",
 						"properties":{
-							"data_version":{
-								"type":"string"
-							},
 							"time_stamp":{
 								"type":"string"
 							},
@@ -326,9 +299,6 @@
 				"source":{
 					"type":"object",
 					"properties":{
-						"data_version":{
-							"type":"string"
-						},
 						"discovered_by":{
 							"type":"string"
 						},
@@ -355,9 +325,6 @@
       			"notes":{
       				"type":"object",
       				"properties":{
-      					"data_version":{
-      						"type":"string"
-      					},
       					"lang":{
       						"type":"string"
       					},
@@ -371,9 +338,6 @@
       				"items":{
       					"type":"object",
       					"properties":{
-      						"data_version":{
-      							"type":"string"
-      						},
       						"id":{
       							"type":"string"
       						},
@@ -399,16 +363,13 @@
       			},
       			"impact_metrics":{
 		      		"type":"object",
-		      		"properties":{
-		      			"data_version":{
-		      				"type":"string"
-		      			},	
-		      			"vector":{
-		      				"type":"string"
-		      			},
+		      		"properties":{	
 			      		"cvss2": {
 			      			"type": "object",
 			      			"properties": {
+			      				"vector":{
+		      						"type":"string"
+		      					},
 			        			"bm": {
 			           				"type": "object",
 			         				"properties": {
@@ -480,6 +441,9 @@
 							"cvss3": {
 				      				"type": "object",
 				      				"properties": {
+				      					"vector":{
+		      								"type":"string"
+		      							},
 				        				"bm": {
 				            					"type": "object",
 				            					"properties": {

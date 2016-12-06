@@ -3,7 +3,6 @@
 	"cve_id":"CVE-YYYY-XXXXXX",
 	"products": [
       {
-        "data_version": "3.1",
         "vendor_name": "string",
         "product": [
           {
@@ -16,7 +15,6 @@
     ],
 	"problem_types":[
 		{
-			"data_version":"3.1",
 			"description":[
 				{
 					"lang":"string ISO 639-2",
@@ -32,7 +30,6 @@
 	],
 	"description":[
 		{
-			"data_version":"3.1",
 			"lang":"string ISO 639-2",
 			"value":"string description of vulnerability"
 		}
