@@ -4,9 +4,11 @@
 ###################### Python Script to validate JSON file ########################
 ###################################################################################
 
-# Usage
-# To run this script you must have the python modules json and jsonschema installed
-# on your machine.
+### Usage ###
+
+# To run this script you must have the following:
+#	Python 2.7
+#	Python modules json and jsonschema installed on your machine.
 
 # Simply run following command in terminal to validate json file against schema:
 
