@@ -12,7 +12,7 @@
 
 # Simply run following command in terminal to validate json file against schema:
 
-# ./cmdjsonvalidator.py example.json jsonschema.json
+# ./cmdlinejsonvalidator.py example.json jsonschema.json
 
 # Where example will be the name of your JSON file and jsonschema is the schema 
 # you wish to compare the json file against.
