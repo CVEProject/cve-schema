@@ -188,7 +188,9 @@ Mandatory in: none, please note there is a good chance this container may become
 
 Optional in: all containers
 
-# Examples
+# Examples - MAY BE OUT OF DATE (2016-01-18)
+
+Please note I need to update these examples ASAP. 
 
 ## Minimal structure needed for CVE
 
