@@ -58,6 +58,50 @@ Mandatory in: root level
 
 Optional in: none
 
+### UPDATED 
+
+DATE-TIMESTAMP - last update time for this entry
+
+### SERIAL
+
+INT - starts at 1, add 1 everytime an entry is updated/changed
+
+### CVE_ID
+
+CVE-YEAR-NNNNNNN - the CVE ID
+
+### DATE_REQUESTED
+
+DATE-TIMESTAMP - the date/time this issue was requested
+
+### DATE_ASSIGNED
+
+DATE-TIMESTAMP - the date/time this was assigned
+
+### DATE_PUBLIC
+
+DATE_PUBLIC - the date/time this issue went public if known
+
+### REQUESTER
+
+Requestor ID - the requestor of the CVE (email address)
+
+### ASSIGNER
+
+Assigner ID - the assigner of the CVE (email address)
+
+### REPLACED_BY
+
+replaced by data - a single CVE or list of CVEs (comma seperated) 
+
+### STATE
+
+State of CVE - PUBLIC, RESERVED, REPLACED_BY, SPLIT_FROM, MERGED_TO
+
+### TITLE
+
+Short title - if the description is long we may want a short title to refer to
+
 ## CVE_affects
 
 This is the root level container for affected vendors and in turn their affected technologies, products, hardware, etc. It only goes in the root level. 
@@ -201,7 +245,7 @@ Please note I need to update these examples ASAP.
   "CVE_data_version": "4.0",
   "CVE_data_meta": {
     "CVE_data_version": "4.0 - optional, to show nesting of various elements",
-    "CVE_ID": "CVE-2017-900000",
+    "CVE_ID": "CVE-YYYY-NNNNNN",
     "CVE_date_requested": "2017-01-01",
     "CVE_date_assigned": "2017-01-02",
     "CVE_requestor": "kurt@seifried.org",
@@ -294,7 +338,7 @@ The following example has a product with its own description, and a configuratio
   "CVE_data_format": "MITRE",
   "CVE_data_version": "4.0",
   "CVE_data_meta": {
-    "CVE_ID": "CVE-2017-900000",
+    "CVE_ID": "CVE-YYYY-NNNNNN",
     "date_requested": "2017-01-01",
     "date_assigned": "2017-01-02",
     "requestor": "kurt@seifried.org",
