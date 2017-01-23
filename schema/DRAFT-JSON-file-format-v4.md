@@ -224,7 +224,7 @@ Optional in: all containers
 
 ## CVE_impact 
 
-This is impnact type information (e.g. a text description, CVSSv2, CVSSv3, etc.). 
+This is impact type information (e.g. a text description, CVSSv2, CVSSv3, etc.). 
 
 Must contain: At least one entry, can be text, CVSSv2, CVSSv3, others may be added
 
