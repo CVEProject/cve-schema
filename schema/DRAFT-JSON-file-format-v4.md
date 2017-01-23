@@ -6,6 +6,16 @@ CVE_* is a reserved keyword. Essentially every CVE ID file is a JSON Object that
 
 CVE_* keywords are officially documented (this document), if you see one that isn’t here then it’s not an official keyword, and you can ignore it. To add/modify/suggest changes to CVE_* keywords and their data structures please do X (issue in GitHub? TBD) so that we can consider it. 
 
+# Notes on data within the JSON file format
+
+## Unicode
+
+Data may be unicode encoded, titles, descriptions, researcher names, version numbers (people use alphabetical versioning, so we should expect this but in other character sets/languages). Data should no longer be assumed to be simple ascii all the itme. 
+
+## UUEncoded data
+
+File objects associated with CVEs may sometimes be embedded within the JSON data as a uuencoded object (optionally zip compressed and password protected in the case where the data may trigger an AV scanner for example). Again this data may be dangerous or activerly hostile depending on what software you use to process it.
+
 # CVE ID JSON root level object
 
 The CVE ID JSON format is comprised of a number of strings (CVE_data_type, CVE_data_format, CVE_data_version) and then a variety of top level objects, referred to as "containers" that can in turn contain more container objects, strings, lists of data and so on. Essentially the "root" object is just a JSON object "{}".
