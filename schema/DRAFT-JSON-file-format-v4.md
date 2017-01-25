@@ -8,6 +8,10 @@ CVE_* keywords are officially documented (this document), if you see one that is
 
 # Notes on data within the JSON file format
 
+## Timestamps
+
+Timestamps are in ISO 8601, as per the standard if no timezone is specified it is assumed to be local, obviously that is sub optimal for CVE so we will probably need to require all timestamps have a timezone specified, ideally UTC.
+
 ## Unicode
 
 Data may be unicode encoded, titles, descriptions, researcher names, version numbers (people use alphabetical versioning, so we should expect this but in other character sets/languages). Data should no longer be assumed to be simple ascii all the itme. 
