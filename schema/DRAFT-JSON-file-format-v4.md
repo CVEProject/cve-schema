@@ -12,6 +12,10 @@ CVE_* keywords are officially documented (this document), if you see one that is
 
 Timestamps are in ISO 8601, as per the standard if no timezone is specified it is assumed to be local, obviously that is sub optimal for CVE so we will probably need to require all timestamps have a timezone specified, ideally UTC.
 
+## Leapseconds
+
+Subtracted leapseconds don't really affect us, added leapseconds (e.g. 11:59:60) will be rounded down (e.g. 11:59:60 becomes 11:59:59) as we can live with this level of clock skewing. Please note that the CVE test data will likely include timestamps with leapseconds to ensure systems handle them properly if they are encountered, but as CVE data is then passed to other systems and processed in ways we can't know it is safer to get rid of leap seconds.  
+
 ## Unicode
 
 Data may be unicode encoded, titles, descriptions, researcher names, version numbers (people use alphabetical versioning, so we should expect this but in other character sets/languages). Data should no longer be assumed to be simple ascii all the itme. 
