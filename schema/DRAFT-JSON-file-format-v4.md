@@ -86,7 +86,7 @@ INT - starts at 1, add 1 everytime an entry is updated/changed
 
 ### CVE_ID
 
-CVE-YEAR-NNNNNNN - the CVE ID
+CVE-YEAR-NNNNNNN - the CVE ID in the format listed in http://cve.mitre.org/cve/identifiers/syntaxchange.html#new
 
 ### DATE_REQUESTED
 
@@ -154,7 +154,7 @@ Optional in: none
 
 This is the container for listing the affected/non affected/fixed versions of a given technology, product, hardware, etc.
 
-Must contain: At least one affected version (CNA requirement: [VERSION])
+Must contain: At least one affected version (CNA requirement: [VERSION]) 
 
 Mandatory in: CVE_product
 
