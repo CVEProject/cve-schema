@@ -579,7 +579,7 @@ The following example has a product with its own description, and a configuratio
   "CVE_affects": {
     "CVE_vendor": {
       "CVE_product": {
-        "products_affected": [
+        "products_affects": [
           {
             "product_name": "Example product",
             "product_version": "1.0",
