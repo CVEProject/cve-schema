@@ -250,6 +250,16 @@ Mandatory in: none, please note there is a good chance this container may become
 
 Optional in: all containers
 
+## CVE_source
+
+This is the source information (who discovered it, who researched it, etc.) and optionally a chain of CNA information (e.g. the originating CNA and subsequent parent CNAs who have processed it before it arrives at the MITRE root). 
+
+Must contain: IF this is in the root level it MUST contain a CNA_chain entry, IF this source entry is NOT in the root (e.g. it is part of a vendor statement) then it must contain at least one type of data entry.
+
+Mandatory in: none
+
+Optional in: all containers
+
 # Examples - MAY BE OUT OF DATE (2016-01-18)
 
 Please note I need to update these examples ASAP. 
