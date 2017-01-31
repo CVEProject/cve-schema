@@ -168,13 +168,33 @@ JSON data type: object
 
 This is the container for affected vendors, it only goes in the CVE_affects container. 
 
-Must contain: At least one CVE_product definition
+Must contain: At least one CVE_product definition (in CVE_vendor_data)
 
 Mandatory in: CVE_affects
 
 Optional in: none
 
 JSON data type: object
+
+### CVE_vendor_data
+
+This is an array of vendor values, we use an array so that different entities can make statements about the same vendor and they are seperate (if we used a JSON object we'd essentially be keying on the vendor name and they would have to overlap). Also this allows things like CVE_data_version or CVE_description to be applied directly to the vendor entry.
+
+Must contain: One of the vendor definitions must contains at least one CVE_product definition (so there must be a minimum of one full declaration of a vulnerable product)
+
+Mandatory in: CVE_vendor
+
+Optional in: none
+
+JSON data type: array that contains objects
+
+#### CVE_vendor_name
+
+The vendor name
+
+#### CVE_product
+
+See the CVE_product for a full definition
 
 ## CVE_product
 
@@ -188,6 +208,26 @@ Optional in: none
 
 JSON data type: object
 
+### CVE_product_data
+
+This is an array of product values, we use an array so that we can make multiple statements about the same product and they are seperate (if we used a JSON object we'd essentially be keying on the product name and they would have to overlap). Also this allows things like CVE_data_version or CVE_description to be applied directly to the product entry.
+
+Must contain: One of the product definitions must contains at least one CVE_version definition (so there must be a minimum of one full declaration of a vulnerable product)
+
+Mandatory in: CVE_product
+
+Optional in: none
+
+JSON data type: array that contains objects
+
+#### CVE_product_name
+
+The product name
+
+#### CVE_version
+
+See the CVE_version for a full definition
+
 ## CVE_version 
 
 This is the container for listing the affected/non affected/fixed versions of a given technology, product, hardware, etc.
@@ -199,6 +239,26 @@ Mandatory in: CVE_product
 Optional in: none
 
 JSON data type: object
+
+### CVE_version_data
+
+This is an array of version values (vulnerable and not), we use an array so that we can make multiple statements about the same version and they are seperate (if we used a JSON object we'd essentially be keying on the version name/number and they would have to overlap). Also this allows things like CVE_data_version or CVE_description to be applied directly to the product entry. This also allows more complex statements such as "Product X between versions 10.2 and 10.8" to be put in a machine readable format. As well sinc emultiple statements can be used multiple branches of the same product can be defined here.
+
+Must contain: One of the product definitions must contains at least one CVE_version definition (so there must be a minimum of one full declaration of a vulnerable product)
+
+Mandatory in: CVE_version
+
+Optional in: none
+
+JSON data type: array that contains objects
+
+#### CVE_version_value
+
+The version name/value (e.g. 10.0, 3.1, "IceHouse")
+
+#### CVE_version_value
+
+A string value such as "=" (just that version is affected), "!" (not affected), <, >, <=, >=, !>, !<, !=>, !=<
 
 ## CVE_description 
 
