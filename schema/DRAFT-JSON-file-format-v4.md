@@ -66,6 +66,8 @@ Optional in: all containers
 
 These objects can in turn contain more objects, arrays, strings and so on. The reason for this is so that each top level object type can contain self identifying data such as CVE_Data_version. Most objects can in turn contains virtually any other object. In general if you traverse into the nested tree of objects you should not encounter any chains that contains more than one instance of a given object container. Simply put you should not for example encounter a chain such as: root, CVE_affects, CVE_configuration, CVE_workaround, CVE_configuration. Please note that this rule may be subject to change as we get new container types and use cases. 
 
+JSON data type: object
+
 ## CVE_data_meta 
 
 This is meta data about the CVE ID such as the CVE ID, who requested it, who assigned it, when it was requested, when it was assigned, the current state (PUBLIC, REJECT, etc.) and so on. 
@@ -76,49 +78,73 @@ Mandatory in: root level
 
 Optional in: none
 
+JSON data type: object
+
 ### UPDATED 
 
 DATE-TIMESTAMP - last update time for this entry
+
+JSON data type: string
 
 ### SERIAL
 
 INT - starts at 1, add 1 everytime an entry is updated/changed
 
+JSON data type: string
+
 ### CVE_ID
 
 CVE-YEAR-NNNNNNN - the CVE ID in the format listed in http://cve.mitre.org/cve/identifiers/syntaxchange.html#new
+
+JSON data type: string
 
 ### DATE_REQUESTED
 
 DATE-TIMESTAMP - the date/time this issue was requested
 
+JSON data type: string
+
 ### DATE_ASSIGNED
 
 DATE-TIMESTAMP - the date/time this was assigned
+
+JSON data type: string
 
 ### DATE_PUBLIC
 
 DATE_PUBLIC - the date/time this issue went public if known
 
+JSON data type: string
+
 ### REQUESTER
 
 Requestor ID - the requestor of the CVE (email address)
+
+JSON data type: string
 
 ### ASSIGNER
 
 Assigner ID - the assigner of the CVE (email address)
 
+JSON data type: string
+
 ### REPLACED_BY
 
 replaced by data - a single CVE or list of CVEs (comma seperated) 
+
+JSON data type: string
 
 ### STATE
 
 State of CVE - PUBLIC, RESERVED, REPLACED_BY, SPLIT_FROM, MERGED_TO
 
+JSON data type: string
+
 ### TITLE
 
 Short title - if the description is long we may want a short title to refer to
+
+JSON data type: string
 
 ## CVE_affects
 
@@ -130,6 +156,8 @@ Mandatory in: root level
 
 Optional in: none
 
+JSON data type: object
+
 ## CVE_vendor
 
 This is the container for affected vendors, it only goes in the CVE_affects container. 
@@ -139,6 +167,8 @@ Must contain: At least one CVE_product definition
 Mandatory in: CVE_affects
 
 Optional in: none
+
+JSON data type: object
 
 ## CVE_product
 
@@ -150,6 +180,8 @@ Mandatory in: CVE_vendor
 
 Optional in: none
 
+JSON data type: object
+
 ## CVE_version 
 
 This is the container for listing the affected/non affected/fixed versions of a given technology, product, hardware, etc.
@@ -159,6 +191,8 @@ Must contain: At least one affected version (CNA requirement: [VERSION])
 Mandatory in: CVE_product
 
 Optional in: none
+
+JSON data type: object
 
 ## CVE_description 
 
@@ -170,6 +204,8 @@ Mandatory in: root level
 
 Optional in: all containers
 
+JSON data type: object
+
 ## CVE_configuration 
 
 This is configuration information (format to be decided, we may for example support XCCDF or simple text based descriptions). It is generally meant to contain additional containers (e.g. CVE_description, CVE_impact). 
@@ -179,6 +215,8 @@ Must contain: At least one configuration
 Mandatory in: none
 
 Optional in: all containers
+
+JSON data type: object
 
 ## CVE_references 
 
@@ -190,6 +228,8 @@ Mandatory in: root level
 
 Optional in: all containers
 
+JSON data type: object
+
 ## CVE_workaround  
 
 This is workaround information, format to be decided. 
@@ -199,6 +239,8 @@ Must contain: At least one workaround
 Mandatory in: none
 
 Optional in: all containers
+
+JSON data type: object
 
 ## CVE_exploit 
 
@@ -210,6 +252,8 @@ Mandatory in: none
 
 Optional in: all containers
 
+JSON data type: object
+
 ## CVE_timeline 
 
 This is timeline information (different than CVE_credit in that it may be historical events for which nobody can be directly credited), format to be decided. 
@@ -219,6 +263,8 @@ Must contain: At least one timeline entry
 Mandatory in: none
 
 Optional in: all containers
+
+JSON data type: object
 
 ## CVE_credit 
 
@@ -230,6 +276,8 @@ Mandatory in: none
 
 Optional in: all containers
 
+JSON data type: object
+
 ## CVE_problemtype 
 
 This is problem type information (e.g. CWE identifier).
@@ -239,6 +287,8 @@ Must contain: At least one entry, can be text, OWASP, CWE, others may be added (
 Mandatory in: none
 
 Optional in: all containers
+
+JSON data type: object
 
 ## CVE_impact 
 
@@ -250,6 +300,8 @@ Mandatory in: none, please note there is a good chance this container may become
 
 Optional in: all containers
 
+JSON data type: object
+
 ### CVE_impact_cvssv2
 
 The CVSSv2 (https://www.first.org/cvss/v2/guide) scoring data, split up into Base Metrics Group (BM), Temporal Metrics Group (TM) and Environmental Metrics Group (EM). 
@@ -260,85 +312,127 @@ Mandatory in: none
 
 Optional in: CVE_impact
 
+JSON data type: object
+
 #### BM
 
 The Base Metrics Group
+
+JSON data type: object
 
 ##### AV
 
 The Access Vector, must be "L", "A" or "N".
 
+JSON data type: string
+
 ##### AC
 
 The Access Complexity, must be "H", "M" or "L".
+
+JSON data type: string
 
 ##### AU
 
 The Authentication, must be "M", "S" or "N".
 
+JSON data type: string
+
 ##### C
 
 The Confidentiality impact, must be "N", "P" or "C".
+
+JSON data type: string
 
 ##### I
 
 The Integrity impact, must be "N", "P" or "C".
 
+JSON data type: string
+
 ##### A
 
 The Availability impact, must be "N", "P" or "C".
+
+JSON data type: string
 
 ##### SCORE
 
 The CVSSv2 Base Metrics Group score assuming all elements are present.
 
+JSON data type: string
+
 #### TM
 
 The Temporal Metrics Group.
+
+JSON data type: object
 
 ##### E
 
 Exploitability, must be "U", "POC", "F", "H" or "ND".
 
+JSON data type: string
+
 ##### RL
 
 Remediation Level, must be "OF", "TF", "W", "U" or "ND". 
+
+JSON data type: string
 
 ##### RC
 
 Report Confidence, must be "UC", "UR", "C" or "ND".
 
+JSON data type: string
+
 ##### SCORE
 
 The CVSSv2 Temporal Metrics Group score assuming all elements are present.
+
+JSON data type: string
 
 #### EM
 
 The Environmental Metrics Group.
 
+JSON data type: object
+
 ##### CDP
 
 The Collateral Damage Potential, must be "N", "L", "LM", "MH", "H" or "ND".
+
+JSON data type: string
 
 ##### TD
 
 The Target Distribution, must be "N", "L", "M", "H" or "ND".
 
+JSON data type: string
+
 ##### CR
 
 Security Requirements Confidentiality, must be "L", "M", "H" or "ND".
+
+JSON data type: string
 
 ##### IR
 
 Security Requirements Integrity, must be "L", "M", "H" or "ND".
 
+JSON data type: string
+
 ##### AR
 
 Security Requirements Availability, must be "L", "M", "H" or "ND".
 
+JSON data type: string
+
 ##### SCORE
 
 The CVSSv2 Temporal Metrics Group score assuming all elements are present.
+
+JSON data type: string
 
 ### CVE_impact_cvssv3
 
@@ -350,109 +444,163 @@ Mandatory in: none
 
 Optional in: CVE_impact
 
+JSON data type: object
+
 #### BM
 
-2.0: The Base Metric Group scoring information.
+JSON data type: object
+
+The Base Metric Group scoring information.
 
 ##### AV
 
-2.0: The Attack Vector, must be "N", "A", "L" or "P".
+The Attack Vector, must be "N", "A", "L" or "P".
+
+JSON data type: string
 
 ##### AC
 
-2.0: The Attack Complexity, must be "L" or "H".
+The Attack Complexity, must be "L" or "H".
+
+JSON data type: string
 
 ##### PR
 
-2.0: The Privileges Required, must be "N", "L" or "H".
+The Privileges Required, must be "N", "L" or "H".
+
+JSON data type: string
 
 ##### UI
 
-2.0: The User Interaction, must be"N", or "R".
+The User Interaction, must be"N", or "R".
+
+JSON data type: string
 
 ##### S
 
-2.0: The Scope, must be "U", or "C".
+The Scope, must be "U", or "C".
+
+JSON data type: string
 
 ##### C
 
-2.0: The Confidentiality Impact, must be "H", "L" or "N".
+The Confidentiality Impact, must be "H", "L" or "N".
+
+JSON data type: string
 
 ##### I
 
-2.0: The Integrity Impact, must be "H", "L" or "N".
+The Integrity Impact, must be "H", "L" or "N".
+
+JSON data type: string
 
 ##### A
 
-2.0: The Availability Impact, must be "H", "L" or "N".
+The Availability Impact, must be "H", "L" or "N".
+
+JSON data type: string
 
 ##### SCORE
 
-2.0: The CVSSv3 score.
+The CVSSv3 score.
+
+JSON data type: string
 
 #### TM
 
-2.0: The Temporal Metric Group scoring information.
+The Temporal Metric Group scoring information.
+
+JSON data type: object
 
 ##### E
 
-2.0: Exploit Code Maturity, must be "X", "H", "F", "P" and "U".
+Exploit Code Maturity, must be "X", "H", "F", "P" and "U".
+
+JSON data type: string
 
 ##### RL
 
-2.0: Remediation Level, must be "X", "U", "W", "T" and "O".
+Remediation Level, must be "X", "U", "W", "T" and "O".
+
+JSON data type: string
 
 ##### RC
 
-2.0: Report Confidence, must be "X", "C", "R" and "U".
+Report Confidence, must be "X", "C", "R" and "U".
+
+JSON data type: string
 
 #### EM
 
-2.0: The Environmental Metric Group scoring information.
+The Environmental Metric Group scoring information.
+
+JSON data type: object
 
 ##### CR
 
-2.0: Security Requirements Confidentiality, must be "X", "H", "M" or "L".
+Security Requirements Confidentiality, must be "X", "H", "M" or "L".
+
+JSON data type: string
 
 ##### IR
 
-2.0: Security Requirements Integrity, must be "X", "H", "M" or "L".
+Security Requirements Integrity, must be "X", "H", "M" or "L".
+
+JSON data type: string
 
 ##### AR
 
-2.0: Security Requirements Availability, must be "X", "H", "M" or "L".
+Security Requirements Availability, must be "X", "H", "M" or "L".
+
+JSON data type: string
 
 ##### MAV
 
-2.0: The Modified Attack Vector, must be "N", "A", "L" or "P".
+The Modified Attack Vector, must be "N", "A", "L" or "P".
+
+JSON data type: string
 
 ##### MAC
 
-2.0: The Modified Attack Complexity, must be "L" or "H".
+The Modified Attack Complexity, must be "L" or "H".
+
+JSON data type: string
 
 ##### MPR
 
-2.0: The Modified Privileges Required, must be "N", "L" or "H".
+The Modified Privileges Required, must be "N", "L" or "H".
+
+JSON data type: string
 
 ##### MUI
 
-2.0: The Modified User Interaction, must be "N", or "R".
+The Modified User Interaction, must be "N", or "R".
+
+JSON data type: string
 
 ##### MS
 
-2.0: The Modified Scope, must be "U", or "C".
+The Modified Scope, must be "U", or "C".
+
+JSON data type: string
 
 ##### MC
 
-2.0: The Modified Confidentiality Impact, must be "H", "L" or "N".
+The Modified Confidentiality Impact, must be "H", "L" or "N".
+
+JSON data type: string
 
 ##### MI
 
-2.0: The Modified Integrity Impact, must be "H", "L" or "N".
+The Modified Integrity Impact, must be "H", "L" or "N".
+
+JSON data type: string
 
 ##### MA
 
-2.0: The Modified Availability Impact, must be "H", "L" or "N".
+The Modified Availability Impact, must be "H", "L" or "N".
+
+JSON data type: string
 
 ## CVE_source
 
@@ -464,7 +612,9 @@ Mandatory in: none
 
 Optional in: all containers
 
-# Examples - MAY BE OUT OF DATE (2016-01-18)
+JSON data type: object
+
+# Examples - OUT OF DATE DO NOT USE
 
 Please note I need to update these examples ASAP. 
 
