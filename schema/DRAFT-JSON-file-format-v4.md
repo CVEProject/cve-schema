@@ -342,13 +342,117 @@ The CVSSv2 Temporal Metrics Group score assuming all elements are present.
 
 ### CVE_impact_cvssv3
 
-The CVSSv2 (https://www.first.org/cvss/v2/guide) scoring data, split up into Base Metrics Group (BM), Temporal Metrics Group (TM) and Environmental Metrics Group (EM). 
+The CVSSv3 (https://www.first.org/cvss/specification-document) scoring data.
 
 Must contain: At least one data point
 
 Mandatory in: none
 
 Optional in: CVE_impact
+
+#### BM
+
+2.0: The Base Metric Group scoring information.
+
+##### AV
+
+2.0: The Attack Vector, must be "N", "A", "L" or "P".
+
+##### AC
+
+2.0: The Attack Complexity, must be "L" or "H".
+
+##### PR
+
+2.0: The Privileges Required, must be "N", "L" or "H".
+
+##### UI
+
+2.0: The User Interaction, must be"N", or "R".
+
+##### S
+
+2.0: The Scope, must be "U", or "C".
+
+##### C
+
+2.0: The Confidentiality Impact, must be "H", "L" or "N".
+
+##### I
+
+2.0: The Integrity Impact, must be "H", "L" or "N".
+
+##### A
+
+2.0: The Availability Impact, must be "H", "L" or "N".
+
+##### SCORE
+
+2.0: The CVSSv3 score.
+
+#### TM
+
+2.0: The Temporal Metric Group scoring information.
+
+##### E
+
+2.0: Exploit Code Maturity, must be "X", "H", "F", "P" and "U".
+
+##### RL
+
+2.0: Remediation Level, must be "X", "U", "W", "T" and "O".
+
+##### RC
+
+2.0: Report Confidence, must be "X", "C", "R" and "U".
+
+#### EM
+
+2.0: The Environmental Metric Group scoring information.
+
+##### CR
+
+2.0: Security Requirements Confidentiality, must be "X", "H", "M" or "L".
+
+##### IR
+
+2.0: Security Requirements Integrity, must be "X", "H", "M" or "L".
+
+##### AR
+
+2.0: Security Requirements Availability, must be "X", "H", "M" or "L".
+
+##### MAV
+
+2.0: The Modified Attack Vector, must be "N", "A", "L" or "P".
+
+##### MAC
+
+2.0: The Modified Attack Complexity, must be "L" or "H".
+
+##### MPR
+
+2.0: The Modified Privileges Required, must be "N", "L" or "H".
+
+##### MUI
+
+2.0: The Modified User Interaction, must be "N", or "R".
+
+##### MS
+
+2.0: The Modified Scope, must be "U", or "C".
+
+##### MC
+
+2.0: The Modified Confidentiality Impact, must be "H", "L" or "N".
+
+##### MI
+
+2.0: The Modified Integrity Impact, must be "H", "L" or "N".
+
+##### MA
+
+2.0: The Modified Availability Impact, must be "H", "L" or "N".
 
 ## CVE_source
 
