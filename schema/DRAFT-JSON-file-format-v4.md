@@ -42,6 +42,8 @@ Mandatory in: root level
 
 Optional in: none
 
+JSON data type: string
+
 ## CVE_data_format
 
 This string identifies what data format is used in this JSON file. This is mandatory and designed to prevent problems with attempting to detect what format of data is used. Valid values for this string are MITRE, it can also be user defined (e.g. for internal use). 
@@ -52,6 +54,8 @@ Mandatory in: root level
 
 Optional in: all containers
 
+JSON data type: string
+
 ## CVE_data_version
 
 This identifies which version of the data format is in use. This is mandatory and designed to prevent problems with attempting to detect what format of data is used.
@@ -61,6 +65,8 @@ Must contain: the data version
 Mandatory in: root level, any containers not in same version as parent container/root level object
 
 Optional in: all containers
+
+JSON data type: string
 
 # CVE ID JSON containers 
 
