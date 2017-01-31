@@ -250,6 +250,106 @@ Mandatory in: none, please note there is a good chance this container may become
 
 Optional in: all containers
 
+### CVE_impact_cvssv2
+
+The CVSSv2 (https://www.first.org/cvss/v2/guide) scoring data, split up into Base Metrics Group (BM), Temporal Metrics Group (TM) and Environmental Metrics Group (EM). 
+
+Must contain: At least one data point
+
+Mandatory in: none
+
+Optional in: CVE_impact
+
+#### BM
+
+The Base Metrics Group
+
+##### AV
+
+The Access Vector, must be "L", "A" or "N".
+
+##### AC
+
+The Access Complexity, must be "H", "M" or "L".
+
+##### AU
+
+The Authentication, must be "M", "S" or "N".
+
+##### C
+
+The Confidentiality impact, must be "N", "P" or "C".
+
+##### I
+
+The Integrity impact, must be "N", "P" or "C".
+
+##### A
+
+The Availability impact, must be "N", "P" or "C".
+
+##### SCORE
+
+The CVSSv2 Base Metrics Group score assuming all elements are present.
+
+#### TM
+
+The Temporal Metrics Group.
+
+##### E
+
+Exploitability, must be "U", "POC", "F", "H" or "ND".
+
+##### RL
+
+Remediation Level, must be "OF", "TF", "W", "U" or "ND". 
+
+##### RC
+
+Report Confidence, must be "UC", "UR", "C" or "ND".
+
+##### SCORE
+
+The CVSSv2 Temporal Metrics Group score assuming all elements are present.
+
+#### EM
+
+The Environmental Metrics Group.
+
+##### CDP
+
+The Collateral Damage Potential, must be "N", "L", "LM", "MH", "H" or "ND".
+
+##### TD
+
+The Target Distribution, must be "N", "L", "M", "H" or "ND".
+
+##### CR
+
+Security Requirements Confidentiality, must be "L", "M", "H" or "ND".
+
+##### IR
+
+Security Requirements Integrity, must be "L", "M", "H" or "ND".
+
+##### AR
+
+Security Requirements Availability, must be "L", "M", "H" or "ND".
+
+##### SCORE
+
+The CVSSv2 Temporal Metrics Group score assuming all elements are present.
+
+### CVE_impact_cvssv3
+
+The CVSSv2 (https://www.first.org/cvss/v2/guide) scoring data, split up into Base Metrics Group (BM), Temporal Metrics Group (TM) and Environmental Metrics Group (EM). 
+
+Must contain: At least one data point
+
+Mandatory in: none
+
+Optional in: CVE_impact
+
 ## CVE_source
 
 This is the source information (who discovered it, who researched it, etc.) and optionally a chain of CNA information (e.g. the originating CNA and subsequent parent CNAs who have processed it before it arrives at the MITRE root). 
