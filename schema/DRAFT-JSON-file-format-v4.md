@@ -680,9 +680,9 @@ Optional in: all containers
 
 JSON data type: object
 
-# Examples - OUT OF DATE DO NOT USE
+# Examples
 
-Please note I need to update these examples ASAP. 
+The following are a minimal example (as defined by MITRE in the CVE CNA Guidelines) and a more complete example.
 
 ## Minimal structure needed for CVE
 
@@ -707,25 +707,18 @@ Please note I need to update these examples ASAP.
           "CVE_vendor_name": "Example corp.",
           "CVE_product": {
             "CVE_data_version": "4.0 - optional, to show nesting of various elements",
-            "CVE_products_data": [
+            "CVE_product_data": [
               {
                 "CVE_data_version": "4.0 - optional, to show nesting of various elements",
                 "CVE_product_name": "Example product",
-                "CVE_product_version": "1.0",
-                "CVE_product_affected": "="
-              }
-            ]
-          }
-        },
-        {
-          "CVE_vendor_name": "Evil corp.",
-          "CVE_product": {
-            "CVE_data_version": "4.0 - optional, to show nesting of various elements",
-            "CVE_products_data": [
-              {
-                "CVE_product_name": "Evil product",
-                "CVE_product_version": "2.0",
-                "CVE_product_affected": "="
+                "CVE_version": {
+                  "CVE_version_data": [
+                    {
+                      "CVE_version_value": "1.0",
+                      "CVE_version_affected": "="
+                    }
+                  ]
+                }
               }
             ]
           }
@@ -776,7 +769,7 @@ Please note I need to update these examples ASAP.
 }
 ```
 
-## More complicated example with product with configuration and specific description
+## More complicated example with product with configuration and specific description - NEEDS UPDATE
 
 The following example has a product with its own description, and a configuration for that product with it's own description in turn. 
 
