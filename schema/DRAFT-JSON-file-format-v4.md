@@ -348,7 +348,7 @@ JSON data type: object
 
 This is problem type information (e.g. CWE identifier).
 
-Must contain: At least one entry, can be text, OWASP, CWE, others may be added (CNA requirement: [PROBLEMTYPE])
+Must contain: At least one entry, can be text, OWASP, CWE, please note that while only one is required you can use more than one (or indeed all three) as long as they are correct). (CNA requirement: [PROBLEMTYPE])
 
 Mandatory in: none
 
@@ -754,14 +754,6 @@ The following are a minimal example (as defined by MITRE in the CVE CNA Guidelin
             "lang": "string ISO 639-2",
             "value": "string description of problem_type, must be this OR CWE OR OWASP"
           }
-        ],
-        "cwe": [
-          "strings of cwes",
-          "strings separated by commas"
-        ],
-        "owasp": [
-          "string of OWASP information",
-          "strings separated by commas"
         ]
       }
     ]
