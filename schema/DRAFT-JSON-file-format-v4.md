@@ -10,19 +10,19 @@ CVE_* keywords are officially documented (this document), if you see one that is
 
 ## Timestamps
 
-Timestamps are in ISO 8601, as per the standard if no timezone is specified it is assumed to be local, obviously that is sub optimal for CVE so we will probably need to require all timestamps have a timezone specified, ideally UTC.
+Timestamps are in ISO 8601, as per the standard if no time zone is specified it is assumed to be local, obviously, that is sub optimal for CVE so we will probably need to require all timestamps have a time zone specified, ideally UTC.
 
-## Leapseconds
+## Leap seconds
 
-Subtracted leapseconds don't really affect us, added leapseconds (e.g. 11:59:60) will be rounded down (e.g. 11:59:60 becomes 11:59:59) as we can live with this level of clock skewing. Please note that the CVE test data will likely include timestamps with leapseconds to ensure systems handle them properly if they are encountered, but as CVE data is then passed to other systems and processed in ways we can't know it is safer to get rid of leap seconds.  
+Subtracted leap seconds should be acceptable as timestamps will only be off by a second or two at most (and only once in a very rare while), added leap seconds (e.g. 11:59:60) will be rounded down (e.g. 11:59:60 becomes 11:59:59) as we can live with this level of clock skewing. Please note that the CVE test data will likely include timestamps with leap seconds to ensure systems handle them properly if they are encountered, but as CVE data is then passed to other systems and processed in ways we can't know it is safer to get rid of leap seconds.  
 
 ## Unicode
 
-Data may be unicode encoded, titles, descriptions, researcher names, version numbers (people use alphabetical versioning, so we should expect this but in other character sets/languages). Data should no longer be assumed to be simple ascii all the itme. 
+Data may be Unicode encoded, titles, descriptions, researcher names, version numbers (people use alphabetical versioning, so we should expect this but in other character sets/languages). Data should no longer be assumed to be simple ASCII all the time. 
 
-## UUEncoded data
+## UUencoded data
 
-File objects associated with CVEs may sometimes be embedded within the JSON data as a uuencoded object (optionally zip compressed and password protected in the case where the data may trigger an AV scanner for example). Again this data may be dangerous or activerly hostile depending on what software you use to process it.
+File objects associated with CVEs may sometimes be embedded within the JSON data as a UUncoded object (optionally zip compressed and password protected in the case where the data may trigger an AV scanner for example). Again, this data may be dangerous or actively hostile depending on what software you use to process it.
 
 # CVE ID JSON root level object
 
@@ -70,7 +70,7 @@ JSON data type: string
 
 # CVE ID JSON containers 
 
-These objects can in turn contain more objects, arrays, strings and so on. The reason for this is so that each top level object type can contain self identifying data such as CVE_Data_version. Most objects can in turn contains virtually any other object. In general if you traverse into the nested tree of objects you should not encounter any chains that contains more than one instance of a given object container. Simply put you should not for example encounter a chain such as: root, CVE_affects, CVE_configuration, CVE_workaround, CVE_configuration. Please note that this rule may be subject to change as we get new container types and use cases. 
+These objects can in turn contain more objects, arrays, strings and so on. The reason for this is so that each top level object type can contain self-identifying data such as CVE_Data_version. Most objects can in turn contains virtually any other object. In general, if you traverse into the nested tree of objects you should not encounter any chains that contains more than one instance of a given object container. Simply put you should not for example encounter a chain such as: root, CVE_affects, CVE_configuration, CVE_workaround, CVE_configuration. Please note that this rule may be subject to change as we get new container types and use cases. 
 
 JSON data type: object
 
@@ -94,7 +94,7 @@ JSON data type: string
 
 ### SERIAL
 
-INT - starts at 1, add 1 everytime an entry is updated/changed
+INT - starts at 1, add 1 every time an entry is updated or changed
 
 JSON data type: string
 
@@ -136,7 +136,7 @@ JSON data type: string
 
 ### REPLACED_BY
 
-replaced by data - a single CVE or list of CVEs (comma seperated) 
+replaced by data - a single CVE or list of CVEs (comma separated) 
 
 JSON data type: string
 
@@ -178,7 +178,7 @@ JSON data type: object
 
 ### CVE_vendor_data
 
-This is an array of vendor values, we use an array so that different entities can make statements about the same vendor and they are seperate (if we used a JSON object we'd essentially be keying on the vendor name and they would have to overlap). Also this allows things like CVE_data_version or CVE_description to be applied directly to the vendor entry.
+This is an array of version values (vulnerable and not); we use an array so that different entities can make statements about the same vendor and they are separate (if we used a JSON object we'd essentially be keying on the vendor name and they would have to overlap). Also this allows things like CVE_data_version or CVE_description to be applied directly to the vendor entry.
 
 Must contain: One of the vendor definitions must contains at least one CVE_product definition (so there must be a minimum of one full declaration of a vulnerable product)
 
@@ -210,7 +210,7 @@ JSON data type: object
 
 ### CVE_product_data
 
-This is an array of product values, we use an array so that we can make multiple statements about the same product and they are seperate (if we used a JSON object we'd essentially be keying on the product name and they would have to overlap). Also this allows things like CVE_data_version or CVE_description to be applied directly to the product entry.
+This is an array of version values (vulnerable and not); we use an array so that we can make multiple statements about the same product and they are separate (if we used a JSON object we'd essentially be keying on the product name and they would have to overlap). Also this allows things like CVE_data_version or CVE_description to be applied directly to the product entry.
 
 Must contain: One of the product definitions must contains at least one CVE_version definition (so there must be a minimum of one full declaration of a vulnerable product)
 
@@ -230,7 +230,7 @@ See the CVE_version for a full definition
 
 ## CVE_version 
 
-This is the container for listing the affected/non affected/fixed versions of a given technology, product, hardware, etc.
+This is the container for listing the affected/non-affected/fixed versions of a given technology, product, hardware, etc.
 
 Must contain: At least one affected version (CNA requirement: [VERSION]) 
 
@@ -242,7 +242,7 @@ JSON data type: object
 
 ### CVE_version_data
 
-This is an array of version values (vulnerable and not), we use an array so that we can make multiple statements about the same version and they are seperate (if we used a JSON object we'd essentially be keying on the version name/number and they would have to overlap). Also this allows things like CVE_data_version or CVE_description to be applied directly to the product entry. This also allows more complex statements such as "Product X between versions 10.2 and 10.8" to be put in a machine readable format. As well since multiple statements can be used multiple branches of the same product can be defined here.
+This is an array of version values (vulnerable and not); we use an array so that we can make multiple statements about the same version and they are separate (if we used a JSON object we'd essentially be keying on the version name/number and they would have to overlap). Also this allows things like CVE_data_version or CVE_description to be applied directly to the product entry. This also allows more complex statements such as "Product X between versions 10.2 and 10.8" to be put in a machine-readable format. As well since multiple statements can be used multiple branches of the same product can be defined here.
 
 Must contain: One of the product definitions must contains at least one CVE_version definition (so there must be a minimum of one full declaration of a vulnerable product)
 
@@ -274,7 +274,7 @@ JSON data type: object
 
 ## CVE_affects_CPE_data
 
-This is an array of CPE values (vulnerable and not), we use an array so that we can make multiple statements about the same version and they are seperate (if we used a JSON object we'd essentially be keying on the CPE name and they would have to overlap). Also this allows things like CVE_data_version or CVE_description to be applied directly to the product entry. This also allows more complex statements such as "Product X between versions 10.2 and 10.8" to be put in a machine readable format. As well since multiple statements can be used multiple branches of the same product can be defined here.
+This is an array of CPE values (vulnerable and not), we use an array so that we can make multiple statements about the same version and they are separate (if we used a JSON object we'd essentially be keying on the CPE name and they would have to overlap). Also this allows things like CVE_data_version or CVE_description to be applied directly to the product entry. This also allows more complex statements such as "Product X between versions 10.2 and 10.8" to be put in a machine-readable format. As well since multiple statements can be used multiple branches of the same product can be defined here.
 
 Must contain: One of the product definitions must contains at least one CVE_version definition (so there must be a minimum of one full declaration of a vulnerable product)
 
@@ -298,7 +298,7 @@ JSON data type: object
 
 ## CVE_affects_SWID_data
 
-This is an array of SWID values (vulnerable and not), we use an array so that we can make multiple statements about the same version and they are seperate (if we used a JSON object we'd essentially be keying on the SWID name and they would have to overlap). Also this allows things like CVE_data_version or CVE_description to be applied directly to the product entry. This also allows more complex statements such as "Product X between versions 10.2 and 10.8" to be put in a machine readable format. As well since multiple statements can be used multiple branches of the same product can be defined here.
+This is an array of SWID values (vulnerable and not), we use an array so that we can make multiple statements about the same version and they are separate (if we used a JSON object we'd essentially be keying on the SWID name and they would have to overlap). Also this allows things like CVE_data_version or CVE_description to be applied directly to the product entry. This also allows more complex statements such as "Product X between versions 10.2 and 10.8" to be put in a machine-readable format. As well since multiple statements can be used multiple branches of the same product can be defined here.
 
 Must contain: One of the product definitions must contains at least one CVE_version definition (so there must be a minimum of one full declaration of a vulnerable product)
 
@@ -310,7 +310,7 @@ JSON data type: array that contains objects
 
 ## CVE_description 
 
-This is a description of the issue. It can exist in the root level or within virtually any other container, the intent being that for example different products, and configuraitons may result in different impacts and thus descriptions of the issue. 
+This is a description of the issue. It can exist in the root level or within virtually any other container, the intent being that for example different products, and configurations may result in different impacts and thus descriptions of the issue. 
 
 Must contain: At least one description (CNA requirement: [DESCRIPTION])
 
