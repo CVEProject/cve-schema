@@ -242,7 +242,7 @@ JSON data type: object
 
 ### CVE_version_data
 
-This is an array of version values (vulnerable and not), we use an array so that we can make multiple statements about the same version and they are seperate (if we used a JSON object we'd essentially be keying on the version name/number and they would have to overlap). Also this allows things like CVE_data_version or CVE_description to be applied directly to the product entry. This also allows more complex statements such as "Product X between versions 10.2 and 10.8" to be put in a machine readable format. As well sinc emultiple statements can be used multiple branches of the same product can be defined here.
+This is an array of version values (vulnerable and not), we use an array so that we can make multiple statements about the same version and they are seperate (if we used a JSON object we'd essentially be keying on the version name/number and they would have to overlap). Also this allows things like CVE_data_version or CVE_description to be applied directly to the product entry. This also allows more complex statements such as "Product X between versions 10.2 and 10.8" to be put in a machine readable format. As well since multiple statements can be used multiple branches of the same product can be defined here.
 
 Must contain: One of the product definitions must contains at least one CVE_version definition (so there must be a minimum of one full declaration of a vulnerable product)
 
