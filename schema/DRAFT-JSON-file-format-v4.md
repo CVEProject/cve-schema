@@ -170,7 +170,7 @@ This is the container for affected vendors, it only goes in the CVE_affects cont
 
 Must contain: At least one CVE_product definition (in CVE_vendor_data)
 
-Mandatory in: CVE_affects
+Mandatory in: CVE_affects, there must be at least one defined vulnerable product either in the form of a text description (via data defined in CVE_vendor, CVE_product, CVE_version) OR a CVE_affects_CPE OR a CVE_affects_SWID
 
 Optional in: none
 
@@ -259,6 +259,54 @@ The version name/value (e.g. 10.0, 3.1, "IceHouse")
 #### CVE_version_affected
 
 A string value such as "=" (just that version is affected), "!" (not affected), <, >, <=, >=, !>, !<, !=>, !=<
+
+## CVE_affects_CPE
+
+This is the container for affected products defined by CPE. 
+
+Must contain: At least one CPE definition (in CVE_affects_CPE_data)
+
+Mandatory in: CVE_affects, there must be at least one defined vulnerable product either in the form of a text description (via data defined in CVE_vendor, CVE_product, CVE_version) OR a CVE_affects_CPE OR a CVE_affects_SWID
+
+Optional in: none
+
+JSON data type: object
+
+## CVE_affects_CPE_data
+
+This is an array of CPE values (vulnerable and not), we use an array so that we can make multiple statements about the same version and they are seperate (if we used a JSON object we'd essentially be keying on the CPE name and they would have to overlap). Also this allows things like CVE_data_version or CVE_description to be applied directly to the product entry. This also allows more complex statements such as "Product X between versions 10.2 and 10.8" to be put in a machine readable format. As well since multiple statements can be used multiple branches of the same product can be defined here.
+
+Must contain: One of the product definitions must contains at least one CVE_version definition (so there must be a minimum of one full declaration of a vulnerable product)
+
+Mandatory in: CVE_affects_CPE
+
+Optional in: none
+
+JSON data type: array that contains objects
+
+## CVE_affects_SWID
+
+This is the container for affected products defined by CPE. 
+
+Must contain: At least one CPE definition (in CVE_affects_CPE_data)
+
+Mandatory in: CVE_affects, there must be at least one defined vulnerable product either in the form of a text description (via data defined in CVE_vendor, CVE_product, CVE_version) OR a CVE_affects_CPE OR a CVE_affects_SWID
+
+Optional in: none
+
+JSON data type: object
+
+## CVE_affects_SWID_data
+
+This is an array of SWID values (vulnerable and not), we use an array so that we can make multiple statements about the same version and they are seperate (if we used a JSON object we'd essentially be keying on the SWID name and they would have to overlap). Also this allows things like CVE_data_version or CVE_description to be applied directly to the product entry. This also allows more complex statements such as "Product X between versions 10.2 and 10.8" to be put in a machine readable format. As well since multiple statements can be used multiple branches of the same product can be defined here.
+
+Must contain: One of the product definitions must contains at least one CVE_version definition (so there must be a minimum of one full declaration of a vulnerable product)
+
+Mandatory in: CVE_affects_SWID
+
+Optional in: none
+
+JSON data type: array that contains objects
 
 ## CVE_description 
 
