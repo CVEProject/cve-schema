@@ -256,7 +256,7 @@ JSON data type: array that contains objects
 
 The version name/value (e.g. 10.0, 3.1, "IceHouse")
 
-#### CVE_version_value
+#### CVE_version_affected
 
 A string value such as "=" (just that version is affected), "!" (not affected), <, >, <=, >=, !>, !<, !=>, !=<
 
