@@ -28,6 +28,21 @@ File objects associated with CVEs may sometimes be embedded within the JSON data
 
 File objects associated with CVEs may sometimes be embedded within the JSON data as a Base64 object (optionally zip compressed and password protected in the case where the data may trigger an AV scanner for example). Again, this data may be dangerous or actively hostile depending on what software you use to process it.
 
+## Multiple line strings
+
+For data (such as gpg keys, copies of text, etc.) that consists of a multiline string we will simply use "\n" to insert line breaks (JSON strings cannot have actual line breaks). An example of code that can generate such a JSON object is:
+
+```
+#!/usr/bin/python
+import json
+with open(“multi-line.txt", "r") as file:
+    multilinestring=file.read()
+jsonexample={“string_name”: multilinestring}
+print json.dumps(jsonexample)
+```
+
+This is not ideally human readable, but there is no good simple solution for this unfortunately.
+
 # CVE ID JSON root level object
 
 The CVE ID JSON format is comprised of a number of strings (CVE_data_type, CVE_data_format, CVE_data_version) and then a variety of top level objects, referred to as "containers" that can in turn contain more container objects, strings, lists of data and so on. Essentially the "root" object is just a JSON object "{}".
