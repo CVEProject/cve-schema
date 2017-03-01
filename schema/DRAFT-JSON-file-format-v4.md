@@ -10,7 +10,7 @@ CVE_* keywords are officially documented (this document), if you see one that is
 
 ## Timestamps
 
-Timestamps are in ISO 8601, as per the standard if no time zone is specified it is assumed to be local, obviously, that is sub optimal for CVE so we will probably need to require all timestamps have a time zone specified, ideally UTC.
+Timestamps are in ISO 8601, as per the standard if no time zone is specified it is assumed to be local, obviously, that is sub optimal for CVE so we will probably need to require all timestamps have a time zone specified, ideally UTC. Alternatively we can make it a requirement for CNA's to only accept data that is well formed (e.g. timestamps must require timezone data) but then we run the risk of rejecting data that is useful because part of it is not "correct." 
 
 ## Leap seconds
 
