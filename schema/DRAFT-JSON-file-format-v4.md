@@ -813,7 +813,7 @@ The following are a minimal example (as defined by MITRE in the CVE CNA Guidelin
 }
 ```
 ## Minimal example needed for CVE [single entry]
-...
+```
 {
 	"data_type": "CVE",
 	"data_format": "MITRE",
@@ -895,10 +895,10 @@ The following are a minimal example (as defined by MITRE in the CVE CNA Guidelin
 		]
 	}
 }
-...
+```
 
 ## Minimal example needed for CVE [multiple entries]
-...
+```
 [
 	{
 		"data_type": "CVE",
@@ -1061,4 +1061,4 @@ The following are a minimal example (as defined by MITRE in the CVE CNA Guidelin
 	}
 
 ]
-...
+```
