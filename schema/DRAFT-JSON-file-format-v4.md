@@ -794,6 +794,7 @@ The following are a minimal example (as defined by MITRE in the CVE CNA Guidelin
 					}
 				]
 			}
+		]
 	},
 	"references":{
 		"reference_data":[
@@ -854,6 +855,7 @@ The following are a minimal example (as defined by MITRE in the CVE CNA Guidelin
 					}
 				]
 			}
+		]
 	},
 	"references":{
 		"reference_data":[
@@ -940,6 +942,7 @@ The following are a minimal example (as defined by MITRE in the CVE CNA Guidelin
 						}
 					]
 				}
+			]
 		},
 		"references":{
 			"reference_data":[
@@ -1021,6 +1024,7 @@ The following are a minimal example (as defined by MITRE in the CVE CNA Guidelin
 						}
 					]
 				}
+			]
 		},
 		"references":{
 			"reference_data":[
