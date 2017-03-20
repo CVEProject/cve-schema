@@ -51,7 +51,7 @@ The CVE ID JSON format is comprised of a number of strings (CVE_data_type, CVE_d
 
 There are several special string values that can exist at the root level of the CVE ID JSON data, and one special one, the CVE_data_version, which can exist in the root or within any container.
 
-## CVE_data_type
+## data_type
 
 This string identifies what kind of data is held in this JSON file. This is mandatory and designed to prevent problems with attempting to detect what kind of file this is. Valid values for this string are CVE, CNA, CVEMENTOR. 
 
@@ -63,7 +63,7 @@ Optional in: none
 
 JSON data type: string
 
-## CVE_data_format
+## data_format
 
 This string identifies what data format is used in this JSON file. This is mandatory and designed to prevent problems with attempting to detect what format of data is used. Valid values for this string are MITRE, it can also be user defined (e.g. for internal use). 
 
@@ -75,7 +75,7 @@ Optional in: all containers
 
 JSON data type: string
 
-## CVE_data_version
+## data_version
 
 This identifies which version of the data format is in use. This is mandatory and designed to prevent problems with attempting to detect what format of data is used.
 
@@ -171,11 +171,11 @@ Short title - if the description is long we may want a short title to refer to
 
 JSON data type: string
 
-## CVE_affects
+## affects
 
 This is the root level container for affected vendors and in turn their affected technologies, products, hardware, etc. It only goes in the root level. 
 
-Must contain: At least one CVE_vendor definition
+Must contain: At least one vendor definition
 
 Mandatory in: root level
 
@@ -183,151 +183,151 @@ Optional in: none
 
 JSON data type: object
 
-## CVE_vendor
+## vendor
 
-This is the container for affected vendors, it only goes in the CVE_affects container. 
+This is the container for affected vendors, it only goes in the affects container. 
 
-Must contain: At least one CVE_product definition (in CVE_vendor_data)
+Must contain: At least one product definition (in vendor_data)
 
-Mandatory in: CVE_affects, there must be at least one defined vulnerable product either in the form of a text description (via data defined in CVE_vendor, CVE_product, CVE_version) OR a CVE_affects_CPE OR a CVE_affects_SWID
+Mandatory in: affects, there must be at least one defined vulnerable product either in the form of a text description (via data defined in vendor, product, version) OR a affects_CPE OR a affects_SWID
 
 Optional in: none
 
 JSON data type: object
 
-### CVE_vendor_data
+### vendor_data
 
-This is an array of version values (vulnerable and not); we use an array so that different entities can make statements about the same vendor and they are separate (if we used a JSON object we'd essentially be keying on the vendor name and they would have to overlap). Also this allows things like CVE_data_version or CVE_description to be applied directly to the vendor entry.
+This is an array of version values (vulnerable and not); we use an array so that different entities can make statements about the same vendor and they are separate (if we used a JSON object we'd essentially be keying on the vendor name and they would have to overlap). Also this allows things like data_version or description to be applied directly to the vendor entry.
 
-Must contain: One of the vendor definitions must contains at least one CVE_product definition (so there must be a minimum of one full declaration of a vulnerable product)
+Must contain: One of the vendor definitions must contains at least one product definition (so there must be a minimum of one full declaration of a vulnerable product)
 
-Mandatory in: CVE_vendor
+Mandatory in: vendor
 
 Optional in: none
 
 JSON data type: array that contains objects
 
-#### CVE_vendor_name
+#### vendor_name
 
 The vendor name
 
-#### CVE_product
+#### product
 
-See the CVE_product for a full definition
+See the product for a full definition
 
-## CVE_product
+## product
 
 This is the container for affected technologies, products, hardware, etc.
 
 Must contain: At least one affected item by name (CNA requirement: [PRODUCT])
 
-Mandatory in: CVE_vendor
+Mandatory in: vendor
 
 Optional in: none
 
 JSON data type: object
 
-### CVE_product_data
+### product_data
 
-This is an array of version values (vulnerable and not); we use an array so that we can make multiple statements about the same product and they are separate (if we used a JSON object we'd essentially be keying on the product name and they would have to overlap). Also this allows things like CVE_data_version or CVE_description to be applied directly to the product entry.
+This is an array of version values (vulnerable and not); we use an array so that we can make multiple statements about the same product and they are separate (if we used a JSON object we'd essentially be keying on the product name and they would have to overlap). Also this allows things like data_version or description to be applied directly to the product entry.
 
-Must contain: One of the product definitions must contains at least one CVE_version definition (so there must be a minimum of one full declaration of a vulnerable product)
+Must contain: One of the product definitions must contains at least one version definition (so there must be a minimum of one full declaration of a vulnerable product)
 
-Mandatory in: CVE_product
+Mandatory in: product
 
 Optional in: none
 
 JSON data type: array that contains objects
 
-#### CVE_product_name
+#### product_name
 
 The product name
 
-#### CVE_version
+#### version
 
 See the CVE_version for a full definition
 
-## CVE_version 
+## version 
 
 This is the container for listing the affected/non-affected/fixed versions of a given technology, product, hardware, etc.
 
 Must contain: At least one affected version (CNA requirement: [VERSION]) 
 
-Mandatory in: CVE_product
+Mandatory in: product
 
 Optional in: none
 
 JSON data type: object
 
-### CVE_version_data
+### version_data
 
-This is an array of version values (vulnerable and not); we use an array so that we can make multiple statements about the same version and they are separate (if we used a JSON object we'd essentially be keying on the version name/number and they would have to overlap). Also this allows things like CVE_data_version or CVE_description to be applied directly to the product entry. This also allows more complex statements such as "Product X between versions 10.2 and 10.8" to be put in a machine-readable format. As well since multiple statements can be used multiple branches of the same product can be defined here.
+This is an array of version values (vulnerable and not); we use an array so that we can make multiple statements about the same version and they are separate (if we used a JSON object we'd essentially be keying on the version name/number and they would have to overlap). Also this allows things like data_version or description to be applied directly to the product entry. This also allows more complex statements such as "Product X between versions 10.2 and 10.8" to be put in a machine-readable format. As well since multiple statements can be used multiple branches of the same product can be defined here.
 
-Must contain: One of the product definitions must contains at least one CVE_version definition (so there must be a minimum of one full declaration of a vulnerable product)
+Must contain: One of the product definitions must contains at least one version definition (so there must be a minimum of one full declaration of a vulnerable product)
 
-Mandatory in: CVE_version
+Mandatory in: version
 
 Optional in: none
 
 JSON data type: array that contains objects
 
-#### CVE_version_value
+#### version_value
 
 The version name/value (e.g. 10.0, 3.1, "IceHouse")
 
-#### CVE_version_affected
+#### version_affected
 
 A string value such as "=" (just that version is affected), "!" (not affected), <, >, <=, >=, !>, !<, !=>, !=<
 
-## CVE_affects_CPE
+## affects_CPE
 
 This is the container for affected products defined by CPE. 
 
-Must contain: At least one CPE definition (in CVE_affects_CPE_data)
+Must contain: At least one CPE definition (in affects_CPE_data)
 
-Mandatory in: CVE_affects, there must be at least one defined vulnerable product either in the form of a text description (via data defined in CVE_vendor, CVE_product, CVE_version) OR a CVE_affects_CPE OR a CVE_affects_SWID
+Mandatory in: affects, there must be at least one defined vulnerable product either in the form of a text description (via data defined in vendor, product, version) OR a affects_CPE OR a affects_SWID
 
 Optional in: none
 
 JSON data type: object
 
-## CVE_affects_CPE_data
+## affects_CPE_data
 
 This is an array of CPE values (vulnerable and not), we use an array so that we can make multiple statements about the same version and they are separate (if we used a JSON object we'd essentially be keying on the CPE name and they would have to overlap). Also this allows things like CVE_data_version or CVE_description to be applied directly to the product entry. This also allows more complex statements such as "Product X between versions 10.2 and 10.8" to be put in a machine-readable format. As well since multiple statements can be used multiple branches of the same product can be defined here.
 
 Must contain: One of the product definitions must contains at least one CVE_version definition (so there must be a minimum of one full declaration of a vulnerable product)
 
-Mandatory in: CVE_affects_CPE
+Mandatory in: affects_CPE
 
 Optional in: none
 
 JSON data type: array that contains objects
 
-## CVE_affects_SWID
+## affects_SWID
 
 This is the container for affected products defined by CPE. 
 
-Must contain: At least one CPE definition (in CVE_affects_CPE_data)
+Must contain: At least one CPE definition (in affects_CPE_data)
 
-Mandatory in: CVE_affects, there must be at least one defined vulnerable product either in the form of a text description (via data defined in CVE_vendor, CVE_product, CVE_version) OR a CVE_affects_CPE OR a CVE_affects_SWID
+Mandatory in: CVE_affects, there must be at least one defined vulnerable product either in the form of a text description (via data defined in vendor, product, version) OR a affects_CPE OR a affects_SWID
 
 Optional in: none
 
 JSON data type: object
 
-## CVE_affects_SWID_data
+## affects_SWID_data
 
 This is an array of SWID values (vulnerable and not), we use an array so that we can make multiple statements about the same version and they are separate (if we used a JSON object we'd essentially be keying on the SWID name and they would have to overlap). Also this allows things like CVE_data_version or CVE_description to be applied directly to the product entry. This also allows more complex statements such as "Product X between versions 10.2 and 10.8" to be put in a machine-readable format. As well since multiple statements can be used multiple branches of the same product can be defined here.
 
 Must contain: One of the product definitions must contains at least one CVE_version definition (so there must be a minimum of one full declaration of a vulnerable product)
 
-Mandatory in: CVE_affects_SWID
+Mandatory in: affects_SWID
 
 Optional in: none
 
 JSON data type: array that contains objects
 
-## CVE_description 
+## description 
 
 This is a description of the issue. It can exist in the root level or within virtually any other container, the intent being that for example different products, and configurations may result in different impacts and thus descriptions of the issue. 
 
@@ -339,7 +339,7 @@ Optional in: all containers
 
 JSON data type: object
 
-## CVE_configuration 
+## configuration 
 
 This is configuration information (format to be decided, we may for example support XCCDF or simple text based descriptions). It is generally meant to contain additional containers (e.g. CVE_description, CVE_impact). 
 
@@ -351,7 +351,7 @@ Optional in: all containers
 
 JSON data type: object
 
-## CVE_references 
+## references 
 
 This is reference data in the form of URLs or file objects (uuencoded and embedded within the JSON file, exact format to be decided, e.g. we may require a compressed format so the objects require unpacking before they are "dangerous"). 
 
@@ -363,7 +363,7 @@ Optional in: all containers
 
 JSON data type: object
 
-## CVE_workaround  
+## workaround  
 
 This is workaround information, format to be decided. 
 
@@ -375,7 +375,7 @@ Optional in: all containers
 
 JSON data type: object
 
-## CVE_exploit 
+## exploit 
 
 This is exploit information, format to be decided. 
 
@@ -387,7 +387,7 @@ Optional in: all containers
 
 JSON data type: object
 
-## CVE_timeline 
+## timeline 
 
 This is timeline information (different than CVE_credit in that it may be historical events for which nobody can be directly credited), format to be decided. 
 
@@ -399,7 +399,7 @@ Optional in: all containers
 
 JSON data type: object
 
-## CVE_credit 
+## credit 
 
 This is credit information (different than CVE_timeline in that these are specific things being credited to specific people/organizations/etc.), format to be decided. 
 
@@ -411,7 +411,7 @@ Optional in: all containers
 
 JSON data type: object
 
-## CVE_problemtype 
+## problemtype 
 
 This is problem type information (e.g. CWE identifier).
 
@@ -423,7 +423,7 @@ Optional in: all containers
 
 JSON data type: object
 
-## CVE_impact 
+## impact 
 
 This is impact type information (e.g. a text description, CVSSv2, CVSSv3, etc.). 
 
@@ -435,7 +435,7 @@ Optional in: all containers
 
 JSON data type: object
 
-### CVE_impact_cvssv2
+### cvssv2
 
 The CVSSv2 (https://www.first.org/cvss/v2/guide) scoring data, split up into Base Metrics Group (BM), Temporal Metrics Group (TM) and Environmental Metrics Group (EM). 
 
@@ -443,7 +443,7 @@ Must contain: At least one data point
 
 Mandatory in: none
 
-Optional in: CVE_impact
+Optional in: impact
 
 JSON data type: object
 
@@ -567,7 +567,7 @@ The CVSSv2 Temporal Metrics Group score assuming all elements are present.
 
 JSON data type: string
 
-### CVE_impact_cvssv3
+### cvssv3
 
 The CVSSv3 (https://www.first.org/cvss/specification-document) scoring data.
 
@@ -575,7 +575,7 @@ Must contain: At least one data point
 
 Mandatory in: none
 
-Optional in: CVE_impact
+Optional in: impact
 
 JSON data type: object
 
@@ -735,7 +735,7 @@ The Modified Availability Impact, must be "H", "L" or "N".
 
 JSON data type: string
 
-## CVE_source
+## source
 
 This is the source information (who discovered it, who researched it, etc.) and optionally a chain of CNA information (e.g. the originating CNA and subsequent parent CNAs who have processed it before it arrives at the MITRE root). 
 
@@ -755,77 +755,314 @@ The following are a minimal example (as defined by MITRE in the CVE CNA Guidelin
 
 ```
 {
-  "CVE_data_type": "CVE",
-  "CVE_data_format": "MITRE",
-  "CVE_data_version": "4.0",
-  "CVE_data_meta": {
-    "CVE_data_version": "4.0 - optional, to show nesting of various elements",
-    "CVE_ID": "CVE-YYYY-NNNNNN",
-    "CVE_date_requested": "2017-01-01",
-    "CVE_date_assigned": "2017-01-02",
-    "CVE_requestor": "kurt@seifried.org",
-    "CVE_assigner": "kurt@seifried.org"
-  },
-  "CVE_affects": {
-    "CVE_vendor": {
-      "CVE_data_version": "4.0 - optional, to show nesting of various elements",
-      "CVE_vendor_data": [
-        {
-          "CVE_vendor_name": "Example corp.",
-          "CVE_product": {
-            "CVE_data_version": "4.0 - optional, to show nesting of various elements",
-            "CVE_product_data": [
-              {
-                "CVE_data_version": "4.0 - optional, to show nesting of various elements",
-                "CVE_product_name": "Example product",
-                "CVE_version": {
-                  "CVE_version_data": [
-                    {
-                      "CVE_version_value": "1.0",
-                      "CVE_version_affected": "="
-                    }
-                  ]
-                }
-              }
-            ]
-          }
-        }
-      ]
-    }
-  },
-  "CVE_description": {
-    "CVE_data_version": "4.0 - optional, to show nesting of various elements",
-    "CVE_description_data": [
-      {
-        "lang": "eng",
-        "value": "String description of issue"
-      }
-    ]
-  },
-  "CVE_references": {
-    "CVE_data_version": "4.0 - optional, to show nesting of various elements",
-    "CVE_reference_data": [
-      {
-        "url": "string for url location",
-        "name": "string Name of reference i.e. if advisory has name",
-        "publish_date": "DATE-TIMESTAMP of reference release to public"
-      }
-    ]
-  },
-  "CVE_problemtype": {
-    "CVE_data_version": "4.0 - optional, to show nesting of various elements",
-    "CVE_problemtype_data": [
-      {
-        "description": [
-          {
-            "lang": "string ISO 639-2",
-            "value": "string description of problem_type, must be this OR CWE OR OWASP"
-          }
-        ]
-      }
-    ]
-  }
+	"data_type": "CVE",
+	"data_format": "MITRE",
+	"data_version": "4.0",
+	"CVE_data_meta": {
+		"ID": "CVE-YYYY-NNNNNN"
+	},
+	"affects": {
+		"vendor": {
+			"vendor_data": [
+				{
+					"vendor_name": "Example corp.",
+					"product": {
+						"product_data": [
+							{
+								"product_name": "Example product",
+								"version": {
+									"version_data": [
+										{
+											"version_value": "1.0"
+										}
+									]
+								}
+							}
+						]
+					}
+				}
+			]
+		}
+	},
+	"problemtype":{
+		"problemtype_data":[
+			{
+				"description":[
+					{
+						"lang": "string ISO 639-2",
+						"value":"string description of problem_type"
+					}
+				]
+			}
+		]
+	},
+	"references":{
+		"reference_data":[
+			{
+				"url":"string for url location"
+			}
+		]
+	},
+	"description":{
+		"description_data":[
+			{
+				"lang": "string ISO 639-2",
+				"value":"string description of vulnerability"
+			}
+		]
+	}
+}
+```
+## Minimal example needed for CVE [single entry]
+```
+{
+	"data_type": "CVE",
+	"data_format": "MITRE",
+	"data_version": "4.0",
+	"CVE_data_meta": {
+		"ID": "CVE-2005-4900"
+	},
+	"affects": {
+		"vendor": {
+			"vendor_data": [
+				{
+					"vendor_name": " ",
+					"product": {
+						"product_data": [
+							{
+								"product_name": "sha-1",
+								"version": {
+									"version_data": [
+										{
+											"version_value": "sha-1"
+										}
+									]
+								}
+							}
+						]
+					}
+				}
+			]
+		}
+	},
+	"problemtype":{
+		"problemtype_data":[
+			{
+				"description":[
+					{
+						"lang": "eng",
+						"value":"some sort of cryptography problem"
+					}
+				]
+			}
+		]
+	},
+	"references":{
+		"reference_data":[
+			{
+				"url":"MISC:http://ia.cr/2007/474"
+			},
+			{
+				"url":"MISC:http://shattered.io/"
+			},
+			{
+				"url":"MISC:http://www.cwi.nl/news/2017/cwi-and-google-announce-first-collision-industry-security-standard-sha-1"
+			},
+			{
+				"url":"MISC:https://arstechnica.com/security/2017/02/at-deaths-door-for-years-widely-used-sha1-function-is-now-dead/"
+			},
+			{
+				"url":"MISC:https://security.googleblog.com/2015/12/an-update-on-sha-1-certificates-in.html"
+			},
+			{
+				"url":"MISC:https://security.googleblog.com/2017/02/announcing-first-sha1-collision.html"
+			},
+			{
+				"url":"MISC:https://sites.google.com/site/itstheshappening"
+			},
+			{
+				"url":"MISC:https://www.schneier.com/blog/archives/2005/02/sha1_broken.html"
+			},
+			{
+				"url":"MISC:https://www.schneier.com/blog/archives/2005/08/new_cryptanalyt.html"
+			},
+		]
+	},
+	"description":{
+		"description_data":[
+			{
+				"lang": "eng",
+				"value":"SHA-1 is not collision resistant, which makes it easier for context-dependent attackers to conduct spoofing attacks, as demonstrated by attacks on the use of SHA-1 in TLS 1.2. NOTE: this CVE exists to provide a common identifier for referencing this SHA-1 issue; the existence of an identifier is not, by itself, a technology recommendation."
+			}
+		]
+	}
 }
 ```
 
+## Minimal example needed for CVE [multiple entries]
+```
+[
+	{
+		"data_type": "CVE",
+		"data_format": "MITRE",
+		"data_version": "4.0",
+		"CVE_data_meta": {
+			"ID": "CVE-2005-4900"
+		},
+		"affects": {
+			"vendor": {
+				"vendor_data": [
+					{
+						"vendor_name": " ",
+						"product": {
+							"product_data": [
+								{
+									"product_name": "sha-1",
+									"version": {
+										"version_data": [
+											{
+												"version_value": " "
+											}
+										]
+									}
+								}
+							]
+						}
+					}
+				]
+			}
+		},
+		"problemtype":{
+			"problemtype_data":[
+				{
+					"description":[
+						{
+							"lang": "eng",
+							"value":"some sort of cryptography problem"
+						}
+					]
+				}
+			]
+		},
+		"references":{
+			"reference_data":[
+				{
+					"url":"http://ia.cr/2007/474"
+				},
+				{
+					"url":"http://shattered.io/"
+				},
+				{
+					"url":"http://www.cwi.nl/news/2017/cwi-and-google-announce-first-collision-industry-security-standard-sha-1"
+				},
+				{
+					"url":"https://arstechnica.com/security/2017/02/at-deaths-door-for-years-widely-used-sha1-function-is-now-dead/"
+				},
+				{
+					"url":"https://security.googleblog.com/2015/12/an-update-on-sha-1-certificates-in.html"
+				},
+				{
+					"url":"https://security.googleblog.com/2017/02/announcing-first-sha1-collision.html"
+				},
+				{
+					"url":"https://sites.google.com/site/itstheshappening"
+				},
+				{
+					"url":"https://www.schneier.com/blog/archives/2005/02/sha1_broken.html"
+				},
+				{
+					"url":"https://www.schneier.com/blog/archives/2005/08/new_cryptanalyt.html"
+				},
+			]
+		},
+		"description":{
+			"description_data":[
+				{
+					"lang": "eng",
+					"value":"SHA-1 is not collision resistant, which makes it easier for context-dependent attackers to conduct spoofing attacks, as demonstrated by attacks on the use of SHA-1 in TLS 1.2. NOTE: this CVE exists to provide a common identifier for referencing this SHA-1 issue; the existence of an identifier is not, by itself, a technology recommendation."
+				}
+			]
+		}
+	},
+	{
+		"data_type": "CVE",
+		"data_format": "MITRE",
+		"data_version": "4.0",
+		"CVE_data_meta": {
+			"ID": "CVE-2004-2761"
+		},
+		"affects": {
+			"vendor": {
+				"vendor_data": [
+					{
+						"vendor_name": " ",
+						"product": {
+							"product_data": [
+								{
+									"product_name": "MD5",
+									"version": {
+										"version_data": [
+											{
+												"version_value": " "
+											}
+										]
+									}
+								}
+							]
+						}
+					}
+				]
+			}
+		},
+		"problemtype":{
+			"problemtype_data":[
+				{
+					"description":[
+						{
+							"lang": "eng",
+							"value":"other"
+						}
+					]
+				}
+			]
+		},
+		"references":{
+			"reference_data":[
+				{
+					"url":"http://blog.mozilla.com/security/2008/12/30/md5-weaknesses-could-lead-to-ce..."
+				},
+				{
+					"url":"http://blogs.technet.com/swi/archive/2008/12/30/information-regarding-md5-c..."
+				},
+				{
+					"url":"http://www.doxpara.com/research/md5/md5_someday.pdf"
+				},
+				{
+					"url":"http://www.microsoft.com/technet/security/advisory/961509.mspx"
+				},
+				{
+					"url":"http://www.phreedom.org/research/rogue-ca/"
+				},
+				{
+					"url":"http://www.win.tue.nl/hashclash/SoftIntCodeSign/"
+				},
+				{
+					"url":"http://www.win.tue.nl/hashclash/rogue-ca/"
+				},
+				{
+					"url":"https://www.schneier.com/blog/archives/2005/02/sha1_broken.html"
+				}
+			]
+		},
+		"description":{
+			"description_data":[
+				{
+					"lang": "eng",
+					"value":"The MD5 Message-Digest Algorithm is not collision resistant, which makes it easier for context-dependent attackers to conduct spoofing attacks, as demonstrated by attacks on the use of MD5 in the signature algorithm of an X.509 certificate."
+				}
+			]
+		}
+	}
 
+]
+```
