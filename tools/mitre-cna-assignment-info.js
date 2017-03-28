@@ -148,7 +148,7 @@ var server = http.createServer(function(request, response) {
               ],
             }
 
-          });
+          }, null, 2);
         }
         else if (output_format == 'flat') {
           body += 
