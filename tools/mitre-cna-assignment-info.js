@@ -77,7 +77,7 @@ var server = http.createServer(function(request, response) {
         errs.push("At least one reference is required!");
       }
       else {
-        if (!post['references'].match(/^(ftp|http)s?:\/\/[^\/]+\/\S+$/)) {
+        if (!post['references'].match(/^(ftp|http)s?:\/\/[^\/]+(\/\S+)?$/)) {
           errs.push("'" + post['references'] + "' is not a valid reference!");
         }
       }
