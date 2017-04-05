@@ -28,55 +28,41 @@ import sys
 import json
 import jsonschema
 from jsonschema import validate
-from jsonschema.validators import extend
-from jsonschema.exceptions import ValidationError
 from jsonschema import Draft4Validator
 
 
 
-def jsonvalidation(argv1,argv2):
-	# Point to the location of the most currently used schema
-	schema_location= str(argv2)
-	# Open the file for reading
-	schema_file = open(schema_location,"r")
+def jsonvalidation(json_doc_path, json_schema_path):
 
-	# Read the file into string
-	schema_string = schema_file.read()
-
-	# Close the file after reading into string
-	schema_file.close()
-
-	# In order to use the validation function you need to have JSON objects
-	# Now load JSON string into a JSON object
-	schema_load = json.loads(schema_string)
-
-	# Lets point to the location of the input JSON file.
-	json_location = str(argv1)
+	with open(json_schema_path, 'r') as fp:
+		schema_doc=json.load(fp)
 
 	# Open the file for reading
-	json_file = open(json_location,"r")
-
-	# Read the contents of file
-	json_string= json_file.read()
-
-	# Close the file after reading into string
-	json_file.close()
-
-	# In order to use the validation function you need to have JSON objects
-	# Now load JSON string into a JSON object
-	json_load = json.loads(json_string)
+	with open(json_doc_path, 'r') as fp:
+		json_doc = json.load(fp)
 
 	try:
-		validate(json_load,schema_load)
+		validate(json_doc,schema_doc)
 		sys.stdout.write("Record passed validation \n")
 	except jsonschema.exceptions.ValidationError as incorrect:
-		v = Draft4Validator(schema_load)
-		errors = sorted(v.iter_errors(json_load), key=lambda e: e.path)
+		v = Draft4Validator(schema_doc)
+		errors = sorted(v.iter_errors(json_doc), key=lambda e: e.path)
 		for error in errors:
 			sys.stderr.write("Record did not pass: \n")
 			sys.stderr.write(str(error.message)+ "\n")
 
-##################################################################################
-##################################################################################
+def main():
+	import argparse
 
-jsonvalidation(sys.argv[1],sys.argv[2])
+	parser = argparse.ArgumentParser(description='validate a JSON file')
+	parser.add_argument('jsondoc', type=str, help='path/to/doc.json')
+	parser.add_argument('schema', type=str, help='path/to/schema.json')
+	args = parser.parse_args()
+
+	jsonvalidation(args.jsondoc, args.schema)
+
+
+
+if __name__=='__main__':
+	main()
+
