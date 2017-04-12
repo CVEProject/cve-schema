@@ -97,7 +97,7 @@ JSON data type: object
 
 This is meta data about the CVE ID such as the CVE ID, who requested it, who assigned it, when it was requested, when it was assigned, the current state (PUBLIC, REJECT, etc.) and so on. 
 
-Must contain: CVE ID (CNA requirement: [CVEID])
+Must contain: CVE ID (CNA requirement: [CVEID]) and ASSIGNER
 
 Mandatory in: root level
 
@@ -760,6 +760,7 @@ The following are a minimal example (as defined by MITRE in the CVE CNA Guidelin
 	"data_version": "4.0",
 	"CVE_data_meta": {
 		"ID": "CVE-YYYY-NNNNNN"
+		"ASSIGNER": "Example email address"
 	},
 	"affects": {
 		"vendor": {
@@ -820,7 +821,8 @@ The following are a minimal example (as defined by MITRE in the CVE CNA Guidelin
 	"data_format": "MITRE",
 	"data_version": "4.0",
 	"CVE_data_meta": {
-		"ID": "CVE-2005-4900"
+		"ID": "CVE-2005-4900",
+		"ASSIGNER": "cve@mitre.org"
 	},
 	"affects": {
 		"vendor": {
@@ -907,7 +909,8 @@ The following are a minimal example (as defined by MITRE in the CVE CNA Guidelin
 		"data_format": "MITRE",
 		"data_version": "4.0",
 		"CVE_data_meta": {
-			"ID": "CVE-2005-4900"
+			"ID": "CVE-2005-4900",
+			"ASSIGNER": "cve@mitre.org"
 		},
 		"affects": {
 			"vendor": {
@@ -989,7 +992,8 @@ The following are a minimal example (as defined by MITRE in the CVE CNA Guidelin
 		"data_format": "MITRE",
 		"data_version": "4.0",
 		"CVE_data_meta": {
-			"ID": "CVE-2004-2761"
+			"ID": "CVE-2004-2761",
+			"ASSIGNER": "cve@mitre.org"
 		},
 		"affects": {
 			"vendor": {
