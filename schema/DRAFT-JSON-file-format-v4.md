@@ -885,7 +885,7 @@ The following are a minimal example (as defined by MITRE in the CVE CNA Guidelin
 			},
 			{
 				"url":"https://www.schneier.com/blog/archives/2005/08/new_cryptanalyt.html"
-			},
+			}
 		]
 	},
 	"description":{
@@ -972,7 +972,7 @@ The following are a minimal example (as defined by MITRE in the CVE CNA Guidelin
 				},
 				{
 					"url":"https://www.schneier.com/blog/archives/2005/08/new_cryptanalyt.html"
-				},
+				}
 			]
 		},
 		"description":{
