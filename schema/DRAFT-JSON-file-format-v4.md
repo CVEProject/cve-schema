@@ -117,7 +117,7 @@ INT - starts at 1, add 1 every time an entry is updated or changed
 
 JSON data type: string
 
-### CVE_ID
+### ID
 
 CVE-YEAR-NNNNNNN - the CVE ID in the format listed in http://cve.mitre.org/cve/identifiers/syntaxchange.html#new
 
