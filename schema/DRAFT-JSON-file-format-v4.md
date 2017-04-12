@@ -860,31 +860,31 @@ The following are a minimal example (as defined by MITRE in the CVE CNA Guidelin
 	"references":{
 		"reference_data":[
 			{
-				"url":"MISC:http://ia.cr/2007/474"
+				"url":"http://ia.cr/2007/474"
 			},
 			{
-				"url":"MISC:http://shattered.io/"
+				"url":"http://shattered.io/"
 			},
 			{
-				"url":"MISC:http://www.cwi.nl/news/2017/cwi-and-google-announce-first-collision-industry-security-standard-sha-1"
+				"url":"http://www.cwi.nl/news/2017/cwi-and-google-announce-first-collision-industry-security-standard-sha-1"
 			},
 			{
-				"url":"MISC:https://arstechnica.com/security/2017/02/at-deaths-door-for-years-widely-used-sha1-function-is-now-dead/"
+				"url":"https://arstechnica.com/security/2017/02/at-deaths-door-for-years-widely-used-sha1-function-is-now-dead/"
 			},
 			{
-				"url":"MISC:https://security.googleblog.com/2015/12/an-update-on-sha-1-certificates-in.html"
+				"url":"https://security.googleblog.com/2015/12/an-update-on-sha-1-certificates-in.html"
 			},
 			{
-				"url":"MISC:https://security.googleblog.com/2017/02/announcing-first-sha1-collision.html"
+				"url":"https://security.googleblog.com/2017/02/announcing-first-sha1-collision.html"
 			},
 			{
-				"url":"MISC:https://sites.google.com/site/itstheshappening"
+				"url":"https://sites.google.com/site/itstheshappening"
 			},
 			{
-				"url":"MISC:https://www.schneier.com/blog/archives/2005/02/sha1_broken.html"
+				"url":"https://www.schneier.com/blog/archives/2005/02/sha1_broken.html"
 			},
 			{
-				"url":"MISC:https://www.schneier.com/blog/archives/2005/08/new_cryptanalyt.html"
+				"url":"https://www.schneier.com/blog/archives/2005/08/new_cryptanalyt.html"
 			},
 		]
 	},
