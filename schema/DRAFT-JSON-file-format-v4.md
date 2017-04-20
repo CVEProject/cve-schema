@@ -143,7 +143,7 @@ JSON data type: string
 
 ### REQUESTER
 
-Requestor ID - the requestor of the CVE (email address)
+Requester ID - the requester of the CVE (email address)
 
 JSON data type: string
 
