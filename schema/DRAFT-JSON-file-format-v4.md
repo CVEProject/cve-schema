@@ -759,7 +759,7 @@ The following are a minimal example (as defined by MITRE in the CVE CNA Guidelin
 	"data_format": "MITRE",
 	"data_version": "4.0",
 	"CVE_data_meta": {
-		"ID": "CVE-YYYY-NNNNNN"
+		"ID": "CVE-YYYY-NNNNNN",
 		"ASSIGNER": "Example email address"
 	},
 	"affects": {
