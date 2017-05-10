@@ -39,6 +39,7 @@ var server = http.createServer(function(request, response) {
              '<table>' + '\n' + 
              '<tr><th>CVE id : </th><td><input type="text" size="15" name="id"></td></tr>' + '\n' +
              '<tr><th>Vendor : </th><td><input type="text" size="25" name="vendor"></td></tr>' + '\n' +
+             '<tr><th>Assigner : </th><td><input type="text" size="15" name="assigner"> (e-mail address)</td></tr>' + '\n' +
              '<tr><th>Product(s) : </th><td><input type="text" size="80" name="product"></td></tr>' + '\n' +
              '<tr><th>Version(s) : </th><td><input type="text" size="80" name="version"></td></tr>' + '\n' +
              '<tr><th>Problem type : </th><td><input type="text" size="80" name="problem_type"></td></tr>' + '\n' +
@@ -63,6 +64,12 @@ var server = http.createServer(function(request, response) {
       }
       if (!post['vendor']) {
         errs.push("The vendor name is required!");
+      }
+      if (!post['assigner']) {
+        errs.push("The assigner e-mail is required!");
+      }
+      else if (!post['assigner'].match(/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/)) {
+        errs.push("'" + post['assigner'] + "' does not look like an e-mail address!");
       }
       if (!post['product']) {
         errs.push("Product name information is required!");
@@ -95,6 +102,7 @@ var server = http.createServer(function(request, response) {
             "data_format": "MITRE",
             "data_version": "4.0",
             "CVE_data_meta": {
+              "ASSIGNER" : post['assigner'],
               "ID": post['id']
             },
             "affects": {
