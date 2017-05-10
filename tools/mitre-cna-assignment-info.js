@@ -161,7 +161,7 @@ var server = http.createServer(function(request, response) {
         else if (output_format == 'flat') {
           body += 
                '[CVEID]:' + post['id'] + '\n' +
-               '[PRODUCT]:' + post['vendor'] + ' ' + post['product'] + ' ' + post['version'] + '\n' +
+               '[PRODUCT]:' + post['vendor'] + ' ' + post['product'] + '\n' +
                '[VERSION]:' + post['version'] + '\n' +
                '[PROBLEMTYPE]:' + post['problem_type'] + '\n' +
                '[REFERENCES]:' + post['references'] + '\n' +
