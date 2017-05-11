@@ -37,7 +37,12 @@ def jsonvalidation(json_doc_path, json_schema_path):
 
     # Open the file for reading
     with open(json_doc_path, 'r') as fp:
-        json_doc = json.load(fp)
+        try:
+            json_doc = json.load(fp)
+        except ValueError as err:
+            sys.stderr.write("Failed to parse JSON : \n")
+            sys.stderr.write("  " + str(err) + "\n")
+            raise SystemExit
 
     try:
         validate(json_doc, schema_doc)
