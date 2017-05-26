@@ -5,6 +5,7 @@
 
 var listen_on = 38103;
 var output_format = 'json40';
+var state = 'PUBLIC';
 
 var title = 'CVE CNA Assignment Information Form';
 var instructions = 'Use this form to enter CNA assignment information for an single id to be submitted to MITRE. Note that the form does not have support for multiple vendors, products, versions, or references.';
@@ -103,7 +104,8 @@ var server = http.createServer(function(request, response) {
             "data_version": "4.0",
             "CVE_data_meta": {
               "ASSIGNER" : post['assigner'],
-              "ID": post['id']
+              "ID": post['id'],
+              "STATE" : state
             },
             "affects": {
               "vendor": {
