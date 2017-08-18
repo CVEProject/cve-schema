@@ -39,6 +39,7 @@
       "required": [ "url" ],
       "properties": {
         "url": {
+          "maxLength": 500,
           "type": "string",
           "pattern": "^(ftp|http)s?://[^ \t]+$"
         }
@@ -49,7 +50,7 @@
       "required": [ "lang", "value" ],
       "properties": {
         "lang": { "type": "string" },
-        "value": { "type": "string" }
+        "value": { "type": "string", "maxLength": 3999 }
       }
     }
   },
@@ -129,6 +130,7 @@
       "properties": {
         "reference_data": {
           "type": "array",
+          "maxItems": 500,
           "minItems": 1,
           "items": { "$ref": "#/definitions/reference" }
         }
