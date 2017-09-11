@@ -22,11 +22,11 @@ Data may be Unicode encoded, titles, descriptions, researcher names, version num
 
 ## UUencoded data
 
-File objects associated with CVEs may sometimes be embedded within the JSON data as a UUncoded object (optionally zip compressed and password protected in the case where the data may trigger an AV scanner for example). Again, this data may be dangerous or actively hostile depending on what software you use to process it.
+File objects associated with CVE IDs may sometimes be embedded within the JSON data as a UUncoded object (optionally zip compressed and password protected in the case where the data may trigger an AV scanner for example). Again, this data may be dangerous or actively hostile depending on what software you use to process it.
 
 ## Base64 data
 
-File objects associated with CVEs may sometimes be embedded within the JSON data as a Base64 object (optionally zip compressed and password protected in the case where the data may trigger an AV scanner for example). Again, this data may be dangerous or actively hostile depending on what software you use to process it.
+File objects associated with CVE IDs may sometimes be embedded within the JSON data as a Base64 object (optionally zip compressed and password protected in the case where the data may trigger an AV scanner for example). Again, this data may be dangerous or actively hostile depending on what software you use to process it.
 
 ## Multiple line strings
 
@@ -155,7 +155,7 @@ JSON data type: string
 
 ### REPLACED_BY
 
-replaced by data - a single CVE or list of CVEs (comma separated) 
+replaced by data - a single CVE ID or list of CVE IDs (comma separated) 
 
 JSON data type: string
 
