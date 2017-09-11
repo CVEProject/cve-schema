@@ -1,6 +1,6 @@
 # DRAFT - CVE ID JSON File Format 4.0
 
-This describes the CVE ID JSON format version 4.0, this file format primarily covers CVE ID but also CVE Mentors and CNAs
+This describes the CVE ID JSON format version 4.0, and this file format primarily covers CVE ID but also CVE Mentors and CNAs.
 
 CVE_* is a reserved keyword. Essentially every CVE ID file is a JSON Object that contains more top level objects which in turn contain objects/arrays/booleans/etc. We have some required top level objects: CVE_data_type (what is this file?), CVE_data_format (who’s format is it in?) and CVE_data_version (what version of the data format is this?) for all types.
 
