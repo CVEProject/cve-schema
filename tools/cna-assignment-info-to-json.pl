@@ -54,9 +54,13 @@ if ($options{help} or @ARGV > 0)
        "Options :\n" .
        "  -?, -h, --help                Display this help and exit.\n" .
        "  -f, --files                   Write output to individual files instead of to STDOUT.\n" .
-       "  -s, --spec <spec>             Output JSON that conforms to specified specification (defaults to $data_version).\n";
+       "  -s, --spec <spec>             Output JSON that conforms to specified specification (defaults to $data_version).\n" .
+       "  -v, --vendor <vendor>         Use <vendor> as the specified vendor instead of '$vendor'.\n";
   exit 1;
 }
+
+$vendor = $options{vendor} if (exists $options{vendor});
+
 
 
 ######################################################################
