@@ -101,7 +101,7 @@ while (@lines)
     $product = $fields[1];
     $version = $fields[2];
     $problem_type = $fields[3];
-    push(@urls, split(/\s*,\s*/, $fields[4]));
+    push(@urls, split(/\s+/, $fields[4]));
     $description = $fields[5];
   }
   else
