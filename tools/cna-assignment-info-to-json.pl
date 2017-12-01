@@ -127,7 +127,7 @@ while (@lines)
     $line = shift @lines or die "*** Incomplete entry for $id at line $l! ***\n";
     $l++;
     die "*** Invalid content in line $l ($line)! ***\n" unless ($line =~ /^\s*\[REFERENCES\]\s*:\s*(.+?)\s*$/);
-    @urls = split(/\s*,\s*/, $1);
+    @urls = split(/\s+/, $1);
 
     $line = shift @lines or die "*** Incomplete entry for $id at line $l! ***\n";
     $l++;
