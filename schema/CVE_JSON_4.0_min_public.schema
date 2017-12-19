@@ -41,7 +41,7 @@
         "url": {
           "maxLength": 500,
           "type": "string",
-          "pattern": "^(ftp|http)s?://[^ \t]+$"
+          "pattern": "^(ftp|http)s?://\\S+$"
         }
       }
     },
