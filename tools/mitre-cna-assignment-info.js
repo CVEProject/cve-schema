@@ -38,16 +38,16 @@ var server = http.createServer(function(request, response) {
              '\n' +
              '<form method="POST" action="/">' + '\n' + 
              '<table>' + '\n' + 
-             '<tr><th>CNA : </th><td colspan=2><input type="text" size="25" name="cna" placeholder="required"></td></tr>' + '\n' +
-             '<tr><th>CVE id : </th><td colspan=2><input type="text" size="15" name="id" placeholder="required"></td></tr>' + '\n' +
-             '<tr><th>Vendor : </th><td colspan=2><input type="text" size="25" name="vendor" placeholder="required"></td></tr>' + '\n' +
-             '<tr><th>Assigner : </th><td colspan=2><input type="text" size="15" name="assigner" placeholder="user@example.com"> (e-mail address)</td></tr>' + '\n' +
-             '<tr><th>Product(s) : </th><td colspan=2><input type="text" size="80" name="product" placeholder="required"></td></tr>' + '\n' +
-             '<tr><th>Version(s) : </th><td colspan=2><input type="text" size="80" name="version" placeholder="required"></td></tr>' + '\n' +
-             '<tr><th>Problem type : </th><td colspan=2><input type="text" size="80" name="problem_type" placeholder="required"></td></tr>' + '\n' +
-             '<tr><th>References : </th><td colspan=2><input type="text" size="80" name="references" placeholder="URL required"></td></tr>' + '\n' +
-             '<tr><th>Description : </th><td colspan=2><textarea rows="5" cols="80" name="description" placeholder="required"></textarea></td></tr>' + '\n' +
-             '<tr><th>Format : </th><td colspan=2><input type="radio" name="format" value="json40" checked>json-4.0 ' +
+             '<tr><th align="right">CNA : </th><td colspan=2><input type="text" size="25" name="cna" placeholder="required"></td></tr>' + '\n' +
+             '<tr><th align="right">CVE id : </th><td colspan=2><input type="text" size="15" name="id" placeholder="required"></td></tr>' + '\n' +
+             '<tr><th align="right">Vendor : </th><td colspan=2><input type="text" size="25" name="vendor" placeholder="required"></td></tr>' + '\n' +
+             '<tr><th align="right">Assigner : </th><td colspan=2><input type="text" size="15" name="assigner" placeholder="user@example.com"> (e-mail address)</td></tr>' + '\n' +
+             '<tr><th align="right">Product(s) : </th><td colspan=2><input type="text" size="80" name="product" placeholder="required"></td></tr>' + '\n' +
+             '<tr><th align="right">Version(s) : </th><td colspan=2><input type="text" size="80" name="version" placeholder="required"></td></tr>' + '\n' +
+             '<tr><th align="right">Problem type : </th><td colspan=2><input type="text" size="80" name="problem_type" placeholder="required"></td></tr>' + '\n' +
+             '<tr><th align="right">References : </th><td colspan=2><input type="text" size="80" name="references" placeholder="URL required"></td></tr>' + '\n' +
+             '<tr><th align="right">Description : </th><td colspan=2><textarea rows="5" cols="80" name="description" placeholder="required"></textarea></td></tr>' + '\n' +
+             '<tr><th align="right">Format : </th><td colspan=2><input type="radio" name="format" value="json40" checked>json-4.0 ' +
                '<input type="radio" name="format" value="flat">flat</td><tr>' + '\n' +
              '<tr><th>&nbsp;</th><td></td><td></td></tr>' + '\n' +
              '<tr><th>&nbsp;</th><td><input type="submit"></td><td align="right"><input type="reset"></td></tr>' + '\n' +
