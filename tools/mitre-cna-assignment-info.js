@@ -38,16 +38,17 @@ var server = http.createServer(function(request, response) {
              '\n' +
              '<form method="POST" action="/">' + '\n' + 
              '<table>' + '\n' + 
-             '<tr><th>CVE id : </th><td colspan=2><input type="text" size="15" name="id"></td></tr>' + '\n' +
-             '<tr><th>Vendor : </th><td colspan=2><input type="text" size="25" name="vendor"></td></tr>' + '\n' +
-             '<tr><th>Assigner : </th><td colspan=2><input type="text" size="15" name="assigner"> (e-mail address)</td></tr>' + '\n' +
+             '<tr><th>CNA : </th><td colspan=2><input type="text" size="25" name="cna" value="required"></td></tr>' + '\n' +
+             '<tr><th>CVE id : </th><td colspan=2><input type="text" size="15" name="id" placeholder="required"></td></tr>' + '\n' +
+             '<tr><th>Vendor : </th><td colspan=2><input type="text" size="25" name="vendor" placeholder="required"></td></tr>' + '\n' +
+             '<tr><th>Assigner : </th><td colspan=2><input type="text" size="15" name="assigner" placeholder="user@example.com"> (e-mail address)</td></tr>' + '\n' +
              '<tr><th>Product(s) : </th><td colspan=2><input type="text" size="80" name="product"></td></tr>' + '\n' +
              '<tr><th>Version(s) : </th><td colspan=2><input type="text" size="80" name="version"></td></tr>' + '\n' +
              '<tr><th>Problem type : </th><td colspan=2><input type="text" size="80" name="problem_type"></td></tr>' + '\n' +
-             '<tr><th>References : </th><td colspan=2><input type="text" size="80" name="references"></td></tr>' + '\n' +
+             '<tr><th>References : </th><td colspan=2><input type="text" size="80" name="references" placeholder="URL required"></td></tr>' + '\n' +
              '<tr><th>Description : </th><td colspan=2><textarea rows="5" cols="80" name="description"></textarea></td></tr>' + '\n' +
              '<tr><th>Format : </th><td colspan=2><input type="radio" name="format" value="json40" checked>json-4.0 ' +
-             '<input type="radio" name="format" value="flat">flat</td><tr>' + '\n' +
+               '<input type="radio" name="format" value="flat">flat</td><tr>' + '\n' +
              '<tr><th>&nbsp;</th><td></td><td></td></tr>' + '\n' +
              '<tr><th>&nbsp;</th><td><input type="submit"></td><td align="right"><input type="reset"></td></tr>' + '\n' +
              '</table>' + '\n' + 
@@ -173,6 +174,9 @@ var server = http.createServer(function(request, response) {
                '[PROBLEMTYPE]:' + post['problem_type'] + '\n' +
                '[REFERENCES]:' + post['references'] + '\n' +
                '[DESCRIPTION]:' + post['description'] + '\n';
+	  if (post['cna']) {
+            body += '[ASSIGNINGCNA]:' + post['cna'] + '\n';
+          }
         }
         body += '</pre>' + '\n'
 
