@@ -38,15 +38,18 @@ var server = http.createServer(function(request, response) {
              '\n' +
              '<form method="POST" action="/">' + '\n' + 
              '<table>' + '\n' + 
-             '<tr><th>CVE id : </th><td><input type="text" size="15" name="id"></td></tr>' + '\n' +
-             '<tr><th>Vendor : </th><td><input type="text" size="25" name="vendor"></td></tr>' + '\n' +
-             '<tr><th>Assigner : </th><td><input type="text" size="15" name="assigner"> (e-mail address)</td></tr>' + '\n' +
-             '<tr><th>Product(s) : </th><td><input type="text" size="80" name="product"></td></tr>' + '\n' +
-             '<tr><th>Version(s) : </th><td><input type="text" size="80" name="version"></td></tr>' + '\n' +
-             '<tr><th>Problem type : </th><td><input type="text" size="80" name="problem_type"></td></tr>' + '\n' +
-             '<tr><th>References : </th><td><input type="text" size="80" name="references"></td></tr>' + '\n' +
-             '<tr><th>Description : </th><td><textarea rows="5" cols="80" name="description"></textarea></td></tr>' + '\n' +
-             '<tr><th>&nbsp;</th><td><input type="submit">' + '\n' +
+             '<tr><th>CVE id : </th><td colspan=2><input type="text" size="15" name="id"></td></tr>' + '\n' +
+             '<tr><th>Vendor : </th><td colspan=2><input type="text" size="25" name="vendor"></td></tr>' + '\n' +
+             '<tr><th>Assigner : </th><td colspan=2><input type="text" size="15" name="assigner"> (e-mail address)</td></tr>' + '\n' +
+             '<tr><th>Product(s) : </th><td colspan=2><input type="text" size="80" name="product"></td></tr>' + '\n' +
+             '<tr><th>Version(s) : </th><td colspan=2><input type="text" size="80" name="version"></td></tr>' + '\n' +
+             '<tr><th>Problem type : </th><td colspan=2><input type="text" size="80" name="problem_type"></td></tr>' + '\n' +
+             '<tr><th>References : </th><td colspan=2><input type="text" size="80" name="references"></td></tr>' + '\n' +
+             '<tr><th>Description : </th><td colspan=2><textarea rows="5" cols="80" name="description"></textarea></td></tr>' + '\n' +
+             '<tr><th>Format : </th><td colspan=2><input type="radio" name="format" value="json40" checked>json-4.0 ' +
+             '<input type="radio" name="format" value="flat">flat</td><tr>' + '\n' +
+             '<tr><th>&nbsp;</th><td></td><td></td></tr>' + '\n' +
+             '<tr><th>&nbsp;</th><td><input type="submit"></td><td align="right"><input type="reset"></td></tr>' + '\n' +
              '</table>' + '\n' + 
              '</form>' + '\n' +
              '</body>';
@@ -92,6 +95,8 @@ var server = http.createServer(function(request, response) {
       if (!post['description']) {
         errs.push("A description is required!");
       }
+
+      output_format = post['format'];
 
       if (errs.length == 0) {
         body = '<p>Now submit the following information to MITRE via either the <a target="_blank" href="https://cveform.mitre.org/">CVE request form</a> or an e-mail to <a href="mailto:cve@mitre.org">cve@mitre.org</a>.<br></p>' + '\n' +
