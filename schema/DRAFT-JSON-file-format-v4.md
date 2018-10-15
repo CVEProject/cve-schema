@@ -277,7 +277,29 @@ The version name/value (e.g. 10.0, 3.1, "IceHouse")
 
 #### version_affected
 
-A string value such as "=" (just that version is affected), "!" (not affected), <, >, <=, >=, !>, !<, !=>, !=<
+A string value such as "=" (just that version is affected), "!" (not affected), "?" (unknown),  <, >, <=, >=, !>, !<, !=>, !=<, ?>, ?<, ?<=, ?>=.
+
+| version_affected | definition |
+|----------|---------------|
+| = | affects **version_value** |
+| <  | affects versions prior to **version_value** |
+| > | affects versions later than **version_value** |
+| <= | affects **version_value** and prior versions |
+| >= | affects **version_value** and later versions |
+| ! | doesn't affect **version_value** |
+| !< | doesn't affect versions prior to **version_value** |
+| !> | doesn't affect versions later than **version_value** |
+| !<= | doesn't affect **version_value** and prior versions |
+| !>= | doesn't affect **version_value** and later versions |
+| ? | status of **version_value** is unknown |
+| ?< | status of versions prior to **version_value** is unknown |
+| ?> | status of versions later than **version_value** is unknown |
+| ?<= | status of **version_value** and prior versions is unknown |
+| ?>= | status of **version_value** and later versions is unknown |
+
+?, ?<, ?<= may be used to state that a vulnerability has not been evaluated on certain versions such as unsupported versions.
+
+?>, ?>= can be used to indicate unfixed vulnerabilities, where it is not known if a future version will ever have a fix.
 
 ## affects_CPE
 
