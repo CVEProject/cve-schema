@@ -1,0 +1,568 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://cve.mitre.org/cve/v5_00/",
+    "type": "object",
+    "title": "",
+    "description": "a CVE entry",
+    "definitions": {
+        "reference": {
+            "type": "object",
+            "required": [
+                "url"
+            ],
+            "properties": {
+                "url": {
+                    "maxLength": 500,
+                    "type": "string",
+                    "pattern": "^(ftp|http)s?://\\S+$"
+                }
+            }
+        },
+        "cve_id": {
+            "type": "string",
+            "pattern": "^CVE-[0-9]{4}-[0-9]{4,}$"
+        },
+        "email_address": {
+            "type": "string",
+            "pattern": "^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})$"
+        },
+        "datestamp": {
+            "type": "string",
+            "format": "date",
+            "pattern": "^((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))$"
+        },
+        "timestamp": {
+            "type": "string",
+            "format": "date-time",
+            "description":"Date/time format based on RFC3339 and ISO ISO8601, with an optional timezone. yyyy-MM-ddTHH:mm:ssZZZZ  - if timezone offset is not given, GMT (0000) is assumed.",
+            "pattern": "^((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})?$"
+        },
+        "product": {
+            "type": "object",
+            "description": "",
+            "required": [
+                "product_name",
+                "version"
+            ],
+            "properties": {
+                "product_name": {
+                    "type": "string",
+                    "description": "Name of the affected product."
+                },
+                "version": {
+                    "type": "array",
+                    "description": "",
+                    "minItems": 1,
+                    "items": {
+                        "type": "object",
+                        "description": "Affected/non-affected/fixed versions of a given technology, product, hardware, etc.",
+                        "required": [
+                            "version_value"
+                        ],
+                        "properties": {
+                            "version_value": {
+                                "type": "string",
+                                "description": "The version name/value (e.g. 10.0, 3.1, \"IceHouse\")"
+                            },
+                            "version_affected": {
+                                "type": "string",
+                                "description": "A string value:\n \"=\" (affects version_value),\n \">\" (affects versions prior to version_value),\n \">\" (affects versions later than version_value),\n \"<=\" (affects version_value and prior versions),\n \">=\" (affects version_value and later versions),\n \"!\" (doesn't affect version_value),\n \"!<\" (doesn't affect versions prior to version_value),\n \"!>\" (doesn't affect versions later than version_value),\n \"!<=\" (doesn't affect version_value and prior versions),\n \"!>=\" (doesn't affect version_value and later versions),\n \"?\" (status of version_value is unknown),\n \"?<\" (status of versions prior to version_value is unknown),\n \"?>\" (status of versions later than version_value is unknown),\n \"?<=\" (status of version_value and prior versions is unknown),\n \"?>=\" (status of version_value and later versions is unknown)",
+                                "enum": [
+                                    "=",
+                                    "<",
+                                    ">",
+                                    "<=",
+                                    ">=",
+                                    "!",
+                                    "!<",
+                                    "!>",
+                                    "!<=",
+                                    "!>=",
+                                    "?",
+                                    "?<",
+                                    "?>",
+                                    "?<=",
+                                    "?>="
+                                ]
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "data_type": {
+            "type": "string",
+            "enum": [
+                "CVE"
+            ]
+        },
+        "data_format": {
+            "type": "string",
+            "enum": [
+                "MITRE"
+            ]
+        },
+        "data_version": {
+            "type": "string",
+            "enum": [
+                "5.0"
+            ]
+        },
+        "CVE_data_meta_public": {
+            "type": "object",
+            "description": "This is meta data about the CVE ID such as the CVE ID, who requested it, who assigned it, when it was requested, when it was assigned, the current state (PUBLIC, REJECT, etc.) and so on.",
+            "required": [
+                "ID",
+                "ASSIGNER",
+                "STATE"
+            ],
+            "properties": {
+                "ID": {
+                    "$ref": "#/definitions/cve_id"
+                },
+                "ASSIGNER": {
+                    "$ref": "#/definitions/email_address",
+                    "description": "the assigner of the CVE (email address)"
+                },
+                "REQUESTER": {
+                    "$ref": "#/definitions/email_address",
+                    "description": " the requester of the CVE (email address)"
+                },
+                "UPDATED": {
+                    "$ref": "#/definitions/timestamp"
+                },
+                "SERIAL": {
+                    "type": "number",
+                    "pattern": "^[1-9]\\d*$",
+                    "description": "starts at 1, add 1 every time an entry is updated or changed"
+                },
+                "DATE_REQUESTED": {
+                    "$ref": "#/definitions/timestamp",
+                    "description": "the date/time this issue was requested"
+                },
+                "DATE_ASSIGNED": {
+                    "$ref": "#/definitions/timestamp",
+                    "description": "the date/time this was assigned"
+                },
+                "DATE_PUBLIC": {
+                    "$ref": "#/definitions/timestamp",
+                    "description": "the date/time this went public if known"
+                },
+                "REPLACED_BY": {
+                    "type": "string",
+                    "description": "a single CVE ID or list of CVE IDs (comma separated)"
+                },
+                "STATE": {
+                    "type": "string",
+                    "description": "State of CVE - PUBLIC, RESERVED, REPLACED_BY, SPLIT_FROM, MERGED_TO",
+                    "enum": [
+                        "PUBLIC"
+                    ]
+                },
+                "TITLE": {
+                    "type": "string",
+                    "description": "Short title - if the description is long we may want a short title to refer to"
+                }
+            }
+        },
+        "CVE_data_meta_reserved": {
+            "type": "object",
+            "description": "This is meta data about the CVE ID such as the CVE ID, who requested it, who assigned it, when it was requested, when it was assigned, the current state (PUBLIC, REJECT, etc.) and so on.",
+            "required": [
+                "ID",
+                "ASSIGNER",
+                "STATE"
+            ],
+            "properties": {
+                "ID": {
+                    "$ref": "#/definitions/cve_id"
+                },
+                "ASSIGNER": {
+                    "$ref": "#/definitions/email_address",
+                    "description": "the assigner of the CVE (email address)"
+                },
+                "STATE": {
+                    "type": "string",
+                    "description": "State of CVE - PUBLIC, RESERVED, REPLACED_BY, SPLIT_FROM, MERGED_TO",
+                    "enum": [
+                        "RESERVED"
+                    ]
+                },
+                "DATE_PUBLIC": {
+                    "$ref": "#/definitions/datestamp",
+                    "description": "Anticipated date for public release (YYYY-MM-DD)."
+                }
+            }
+        },
+        "provider_data_meta": {
+            "type": "object",
+            "description":"will be updated to coordinate with CVE user registery, current identifier is an email address.",
+            "properties": {
+                "ID": {
+                    "$ref": "#/definitions/email_address",
+                    "description": "to be updated when user registery "
+                },
+                "UPDATED": {"$ref": "#/definitions/timestamp"}
+            },
+            "required": [
+                "ID",
+                "UPDATED"
+            ]
+        },
+        "cna-container": {
+            "type": "object",
+            "properties": {
+                "provider_data_meta": {"$ref": "#/definitions/provider_data_meta"},
+                "description": {"$ref": "#/definitions/description"},
+                "affects": {"$ref": "#/definitions/affects"},
+                "problemtype": {"$ref": "#/definitions/problemtype"},
+                "references": {"$ref": "#/definitions/references"},
+                "impact": {"$ref": "#/definitions/impact"},
+                "metrics": {"$ref": "#/definitions/metrics"},
+                "configuration": {"$ref": "#/definitions/configuration"},
+                "workaround": {"$ref": "#/definitions/workaround"},
+                "exploit": {"$ref": "#/definitions/exploit"},
+                "timeline": {"$ref": "#/definitions/timeline"},
+                "credit": {"$ref": "#/definitions/credit"},
+                "source": {"$ref": "#/definitions/source"}
+            },
+            "required": [
+                "provider_data_meta",
+                "description",
+                "affects",
+                "references"
+            ]
+        },
+        "adp-container": {
+            "type": "object",
+            "properties": {
+                "provider_data_meta": {"$ref": "#/definitions/provider_data_meta"},
+                "description": {"$ref": "#/definitions/description"},
+                "affects": {"$ref": "#/definitions/affects"},
+                "problemtype": {"$ref": "#/definitions/problemtype"},
+                "references": {"$ref": "#/definitions/references"},
+                "impact": {"$ref": "#/definitions/impact"},
+                "metrics": {"$ref": "#/definitions/metrics"},
+                "configuration": {"$ref": "#/definitions/configuration"},
+                "workaround": {"$ref": "#/definitions/workaround"},
+                "exploit": {"$ref": "#/definitions/exploit"},
+                "timeline": {"$ref": "#/definitions/timeline"},
+                "credit": {"$ref": "#/definitions/credit"},
+                "source": {"$ref": "#/definitions/source"}
+            },
+            "required": ["provider_data_meta"],
+            "minProperties": 2
+        },
+        "containers": {
+            "type": "object",
+            "properties": {
+                "CNA": {"$ref": "#/definitions/cna-container"},
+                "ADP": {
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/adp-container"},
+                    "minItems": 0
+                }
+            },
+            "minProperties": 1
+        },
+        "affects": {
+            "type": "object",
+            "description": "CVE_affects, there must be at least one defined vulnerable product either in the form of a text description (via data defined in vendor, product, version) OR a affects_CPE OR a affects_SWID",
+            "anyOf": [
+                {
+                    "required": [
+                        "vendor"
+                    ]
+                },
+                {
+                    "required": [
+                        "affects_CPE"
+                    ]
+                },
+                {
+                    "required": [
+                        "affects_SWID"
+                    ]
+                }
+            ],
+            "required": [],
+            "properties": {
+                "vendor": {
+                    "type": "array",
+                    "description": "This is the container for affected vendors, it only goes in the affects container.",
+                    "minItems": 1,
+                    "uniqueItems": true,
+                    "items": {
+                        "type": "object",
+                        "description": "",
+                        "required": [
+                            "vendor_name",
+                            "product"
+                        ],
+                        "properties": {
+                            "vendor_name": {
+                                "type": "string",
+                                "description": "Name of the vendor that produced this product."
+                            },
+                            "product": {
+                                "description": "This is the container for affected technologies, products, hardware, etc.",
+                                "type": "array",
+                                "minItems": 1,
+                                "items": {
+                                    "$ref": "#/definitions/product"
+                                }
+                            }
+                        }
+                    }
+                },
+                "affects_CPE": {
+                    "type": "array",
+                    "description": "Affected products defined by CPE. This is an array of CPE values (vulnerable and not), we use an array so that we can make multiple statements about the same version and they are separate (if we used a JSON object we'd essentially be keying on the CPE name and they would have to overlap). Also this allows things like CVE_data_version or CVE_description to be applied directly to the product entry. This also allows more complex statements such as \"Product X between versions 10.2 and 10.8\" to be put in a machine-readable format. As well since multiple statements can be used multiple branches of the same product can be defined here.",
+                    "minItems": 1,
+                    "items": {
+                        "type": "object",
+                        "description": "",
+                        "properties": {},
+                        "minProperties":1
+                    }
+                },
+                "affects_SWID": {
+                    "type": "array",
+                    "description": "",
+                    "minItems": 1,
+                    "items": {
+                        "type": "object",
+                        "description": "",
+                        "properties": {},
+                        "minProperties":1
+                    }
+                }
+            }
+        },
+        "description": {
+            "type": "array",
+            "description": "multi-lingual description of the vulnerability",
+            "items": {
+                "type": "object",
+                "description": "",
+                "minItems": 1,
+                "properties": {
+                    "lang": {
+                        "type": "string",
+                        "description": "ISO 639-2 language code",
+                        "default": "EN"
+                    },
+                    "value": {
+                        "type": "string",
+                        "description": "string description of problem_type, or title from CWE, OWASP"
+                    }
+                }
+            }
+        },
+        "problemtype": {
+            "type": "array",
+            "description": "This is problem type information (e.g. CWE identifier). Must contain: At least one entry, can be text, OWASP, CWE, please note that while only one is required you can use more than one (or indeed all three) as long as they are correct). (CNA requirement: [PROBLEMTYPE])",
+            "items": {
+                "type": "object",
+                "description": "text, OWASP, or CWE",
+                "required": [
+                    "description"
+                ],
+                "properties": {
+                    "description": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "description": "problem type description",
+                            "required": [
+                                "lang",
+                                "description"
+                            ],
+                            "dependencies": {
+                                "type": [
+                                    "reference"
+                                ]
+                            },
+                            "properties": {
+                                "lang": {
+                                    "type": "string",
+                                    "description": "ISO 639-2 language code"
+                                },
+                                "description": {
+                                    "type": "string",
+                                    "description": "string description of problem_type, or title from CWE, OWASP"
+                                },
+                                "CWE-ID": {
+                                    "type": "string",
+                                    "description": "CWE ID of the CWE that best describes this problem_type entry"
+                                },
+                                "type": {
+                                    "type": "string",
+                                    "description": "problemtype source, text, OWASP, CWE, etc"
+                                },
+                                "reference": {
+                                    "$ref": "#/definitions/reference"
+                                }
+                            }
+                        },
+                        "minItems": 1,
+                        "uniqueItems": true
+                    }
+                }
+            },
+            "minItems": 1,
+            "uniqueItems": true
+        },
+        "references": {
+            "type": "array",
+            "description": "This is reference data in the form of URLs or file objects (uuencoded and embedded within the JSON file, exact format to be decided, e.g. we may require a compressed format so the objects require unpacking before they are \"dangerous\").",
+            "items": {
+                "$ref": "#/definitions/reference"
+            },
+            "minItems": 1,
+            "maxItems": 500
+        },
+        "impact": {
+            "type": "array",
+            "description": "collection of impact scores with attribution",
+            "minItems": 1,
+            "items": {
+                "type": "object",
+                "description": "This is impact type information (e.g. a text description",
+                "required": [
+                    "description"
+                ],
+                "properties": {
+                    "CAPEC-ID": {
+                        "type": "string",
+                        "description": "CAPEC-ID that best relates to this impact"
+                    },
+                    "decscription": {
+                        "type": "string",
+                        "description": "Prose description of the impact scenario. At a minimum provide the description given by CAPEC"
+                    }
+                }
+            }
+        },
+        "metrics": {
+            "type": "array",
+            "description": "collection of impact scores with attribution",
+            "minItems": 1,
+            "items": {
+                "type": "object",
+                "description": "This is impact type information (e.g. a text description, CVSSv2, CVSSv3, etc.). Must contain: At least one entry, can be text, CVSSv2, CVSSv3, others may be added",
+                "anyOf": [
+                    {
+                        "required": [
+                            "cvss-v_3_1"
+                        ]
+                    },
+                    {
+                        "required": [
+                            "cvss-v_3_0"
+                        ]
+                    },
+                    {
+                        "required": [
+                            "cvss-v_2_0"
+                        ]
+                    },
+                    {
+                        "required": [
+                            "other"
+                        ]
+                    }
+                ],
+                "properties": {
+                    "format":{
+                        "type":"string",
+                        "descriptions": "Name of the score format. This provides a bit future proofing. Additional properties are not prohibitied, so this will support inclusion of proprietary formats. It also provides an easy future conversion mechanism when future score formats become part of the schema. example: cvss-v_4_4, format = 'cvss-v4_4', other = cvss-v4_4 json object. In the future the other properties can be converted to score properties when they become part of the schema."
+                    },
+                    "scenario": {
+                        "type": "string",
+                        "default": "GENERAL",
+                        "description": "Description of the scenario this metrics object applies to. If no specific scenarion is given, GENERAL is used as the default and applies when no more specific metric matches."
+                    },
+                    "cvss-v_3_1": {
+                        "$ref": "file:cvss-v3.1.json"
+                    },
+                    "cvss-v_3_0": {
+                        "$ref": "file:cvss-v3.0.json"
+                    },
+                    "cvss-v_2_0": {
+                        "$ref": "file:cvss-v2.0.json"
+                    },
+                    "other": {
+                        "type": "object",
+                        "description": "non-standard impact description, may be prose or JSON block",
+                        "properties": {
+                            "type": {
+                                "type": "string"
+                            },
+                            "content": {
+                                "type": "object",
+                                "description": "JSON object not covered by another metrics format"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "configuration": {
+            "type": "object",
+            "description": "This is configuration information (format to be decided, we may for example support XCCDF or simple text based descriptions). It is generally meant to contain additional containers (e.g. CVE_description, CVE_impact). Must contain: At least one configuration"
+        },
+        "workaround": {
+            "type": "object",
+            "description": "This is workaround information, format to be decided. Must contain: At least one workaround"
+        },
+        "exploit": {
+            "type": "object",
+            "description": "This is exploit information, format to be decided. Must contain: At least one exploit / information about exploitation"
+        },
+        "timeline": {
+            "type": "object",
+            "description": "This is timeline information (different than CVE_credit in that it may be historical events for which nobody can be directly credited), format to be decided. Must contain: At least one timeline entry"
+        },
+        "credit": {
+            "type": "object",
+            "description": "This is credit information (different than CVE_timeline in that these are specific things being credited to specific people/organizations/etc.), format to be decided. Must contain: At least one credit entry"
+        },
+        "source": {
+            "type": "object",
+            "description": "This is the source information (who discovered it, who researched it, etc.) and optionally a chain of CNA information (e.g. the originating CNA and subsequent parent CNAs who have processed it before it arrives at the MITRE root).\n Must contain: IF this is in the root level it MUST contain a CNA_chain entry, IF this source entry is NOT in the root (e.g. it is part of a vendor statement) then it must contain at least one type of data entry.\n Mandatory in: none | Optional in: all containers"
+        }
+    },
+    "oneOf": [
+        {
+            "properties": {
+                "data_type": {"$ref": "#/definitions/data_type"},
+                "data_format": {"$ref": "#/definitions/data_format"},
+                "data_version": {"$ref": "#/definitions/data_version"},
+                "CVE_data_meta": {"$ref": "#/definitions/CVE_data_meta_public"},
+                "containers": {"$ref": "#/definitions/containers"}
+            },
+            "required": [
+                "data_type",
+                "data_format",
+                "data_version",
+                "CVE_data_meta",
+                "containers"
+            ]
+        },
+        {
+            "properties": {
+                "data_type": {"$ref": "#/definitions/data_type"},
+                "data_format": {"$ref": "#/definitions/data_format"},
+                "data_version": {"$ref": "#/definitions/data_version"},
+                "CVE_data_meta": {"$ref": "#/definitions/CVE_data_meta_reserved"}
+            },
+            "required": [
+                "data_type",
+                "data_format",
+                "data_version",
+                "CVE_data_meta"
+            ]
+        }
+    ]
+}
