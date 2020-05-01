@@ -11,4 +11,4 @@
 
 ##### 3. Run validator
 
-    node JsonValidator.js <filename.json>
+    node jsonValidator.js <filename.json>

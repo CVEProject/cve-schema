@@ -1,4 +1,4 @@
-const cveSchema5 = {
+const publicSchema = {
   $schema: 'http://json-schema.org/draft-07/schema#',
   $id: 'https://cve.mitre.org/cve/v5_00/',
   type: 'object',
@@ -57,6 +57,7 @@ const cveSchema5 = {
           }
         }
       }
+      // additionalProperties: false
     },
     cve_id: {
       type: 'string',
@@ -191,9 +192,11 @@ const cveSchema5 = {
               },
               references: { $ref: '#/definitions/references' }
             }
+            // additionalProperties: false
           }
         }
       }
+      // additionalProperties: false
     },
     data_type: {
       type: 'string',
@@ -271,60 +274,7 @@ const cveSchema5 = {
           minLength: 1
         }
       }
-    },
-    CVE_data_meta_reserved: {
-      type: 'object',
-      description: 'This is meta data about the CVE ID such as the CVE ID, who requested it, who assigned it, when it was requested, when it was assigned, the current state (PUBLIC, REJECT, etc.) and so on.',
-      required: [
-        'ID',
-        'ASSIGNER',
-        'STATE'
-      ],
-      properties: {
-        ID: {
-          $ref: '#/definitions/cve_id'
-        },
-        ASSIGNER: {
-          $ref: '#/definitions/email_address',
-          description: 'the assigner of the CVE (email address)'
-        },
-        STATE: {
-          type: 'string',
-          description: 'State of CVE - PUBLIC, RESERVED, REJECT',
-          enum: [
-            'RESERVED'
-          ]
-        },
-        DATE_PUBLIC: {
-          $ref: '#/definitions/datestamp',
-          description: 'Anticipated date for public release (YYYY-MM-DD).'
-        }
-      }
-    },
-    CVE_data_meta_reject: {
-      type: 'object',
-      description: 'This is meta data about the CVE ID such as the CVE ID, who requested it, who assigned it, when it was requested, when it was assigned, the current state (PUBLIC, REJECT, etc.) and so on.',
-      required: [
-        'ID',
-        'ASSIGNER',
-        'STATE'
-      ],
-      properties: {
-        ID: {
-          $ref: '#/definitions/cve_id'
-        },
-        ASSIGNER: {
-          $ref: '#/definitions/email_address',
-          description: 'the assigner of the CVE (email address)'
-        },
-        STATE: {
-          type: 'string',
-          description: 'State of CVE - PUBLIC, RESERVED, REJECT',
-          enum: [
-            'REJECT'
-          ]
-        }
-      }
+      // additionalProperties: false
     },
     provider_data_meta: {
       type: 'object',
@@ -342,6 +292,7 @@ const cveSchema5 = {
       required: [
         'ID'
       ]
+      // additionalProperties: false
     },
     'cna-container': {
       type: 'object',
@@ -366,6 +317,7 @@ const cveSchema5 = {
         'affected',
         'references'
       ]
+      // additionalProperties: false
     },
     'adp-container': {
       type: 'object',
@@ -388,6 +340,7 @@ const cveSchema5 = {
         'provider_data_meta'
       ],
       minProperties: 2
+      // additionalProperties: false
     },
     containers: {
       type: 'object',
@@ -452,6 +405,7 @@ const cveSchema5 = {
                 }
               }
             }
+            // additionalProperties: false
           }
         },
         affects_CPE: {
@@ -554,11 +508,13 @@ const cveSchema5 = {
                   $ref: '#/definitions/references'
                 }
               }
+              // additionalProperties: false
             },
             minItems: 1,
             uniqueItems: true
           }
         }
+        // additionalProperties: false
       },
       minItems: 1,
       uniqueItems: true
@@ -596,6 +552,7 @@ const cveSchema5 = {
             minLength: 1
           }
         }
+        // additionalProperties: false
       }
     },
     metrics: {
@@ -667,8 +624,10 @@ const cveSchema5 = {
                 minProperties: 1
               }
             }
+            // additionalProperties: false // Added
           }
         }
+        // additionalProperties: false // Added
       }
     },
     configurations: {
@@ -693,6 +652,7 @@ const cveSchema5 = {
           'lang',
           'value'
         ]
+        // additionalProperties: false
       }
     },
     workarounds: {
@@ -716,6 +676,7 @@ const cveSchema5 = {
           'lang',
           'value'
         ]
+        // additionalProperties: false
       }
     },
     exploits: {
@@ -739,6 +700,7 @@ const cveSchema5 = {
           'lang',
           'value'
         ]
+        // additionalProperties: false
       }
     },
     timeline: {
@@ -768,6 +730,7 @@ const cveSchema5 = {
             minLength: 1
           }
         }
+        // additionalProperties: false
       }
     },
     credits: {
@@ -792,6 +755,7 @@ const cveSchema5 = {
           'lang',
           'value'
         ]
+        // additionalProperties: false
       }
     },
     source: {
@@ -800,59 +764,244 @@ const cveSchema5 = {
       minProperties: 1
     }
   },
-  oneOf: [
-    {
-      properties: {
-        data_type: { $ref: '#/definitions/data_type' },
-        data_format: { $ref: '#/definitions/data_format' },
-        data_version: { $ref: '#/definitions/data_version' },
-        CVE_data_meta: { $ref: '#/definitions/CVE_data_meta_public' },
-        containers: { $ref: '#/definitions/containers' }
-      },
-      required: [
-        'data_type',
-        'data_format',
-        'data_version',
-        'CVE_data_meta',
-        'containers'
-      ],
-      additionalProperties: false
+  properties: {
+    data_type: { $ref: '#/definitions/data_type' },
+    data_format: { $ref: '#/definitions/data_format' },
+    data_version: { $ref: '#/definitions/data_version' },
+    CVE_data_meta: { $ref: '#/definitions/CVE_data_meta_public' },
+    containers: { $ref: '#/definitions/containers' }
+  },
+  required: [
+    'data_type',
+    'data_format',
+    'data_version',
+    'CVE_data_meta',
+    'containers'
+  ],
+  additionalProperties: false
+}
+
+const reservedSchema = {
+  $schema: 'http://json-schema.org/draft-07/schema#',
+  $id: 'https://cve.mitre.org/cve/v5_00/',
+  type: 'object',
+  title: '',
+  description: 'a CVE entry',
+  definitions: {
+    cve_id: {
+      type: 'string',
+      pattern: '^CVE-[0-9]{4}-[0-9]{4,}$'
     },
-    {
-      properties: {
-        data_type: { $ref: '#/definitions/data_type' },
-        data_format: { $ref: '#/definitions/data_format' },
-        data_version: { $ref: '#/definitions/data_version' },
-        CVE_data_meta: { $ref: '#/definitions/CVE_data_meta_reserved' },
-        descriptions: { $ref: '#/definitions/descriptions' }
-      },
-      required: [
-        'data_type',
-        'data_format',
-        'data_version',
-        'CVE_data_meta'
-      ],
-      additionalProperties: false
+    email_address: {
+      type: 'string',
+      minLength: 5,
+      pattern: '^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,18})$'
     },
-    {
-      properties: {
-        data_type: { $ref: '#/definitions/data_type' },
-        data_format: { $ref: '#/definitions/data_format' },
-        data_version: { $ref: '#/definitions/data_version' },
-        CVE_data_meta: { $ref: '#/definitions/CVE_data_meta_reject' },
-        descriptions: { $ref: '#/definitions/descriptions' }
-      },
+    datestamp: {
+      type: 'string',
+      format: 'date',
+      pattern: '^((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))$'
+    },
+    data_type: {
+      type: 'string',
+      enum: [
+        'CVE'
+      ]
+    },
+    data_format: {
+      type: 'string',
+      enum: [
+        'MITRE'
+      ]
+    },
+    data_version: {
+      type: 'string',
+      enum: [
+        '5.0'
+      ]
+    },
+    CVE_data_meta_reserved: {
+      type: 'object',
+      description: 'This is meta data about the CVE ID such as the CVE ID, who requested it, who assigned it, when it was requested, when it was assigned, the current state (PUBLIC, REJECT, etc.) and so on.',
       required: [
-        'data_type',
-        'data_format',
-        'data_version',
-        'CVE_data_meta'
+        'ID',
+        'ASSIGNER',
+        'STATE'
       ],
-      additionalProperties: false
+      properties: {
+        ID: {
+          $ref: '#/definitions/cve_id'
+        },
+        ASSIGNER: {
+          $ref: '#/definitions/email_address',
+          description: 'the assigner of the CVE (email address)'
+        },
+        STATE: {
+          type: 'string',
+          description: 'State of CVE - PUBLIC, RESERVED, REJECT',
+          enum: [
+            'RESERVED'
+          ]
+        },
+        DATE_PUBLIC: {
+          $ref: '#/definitions/datestamp',
+          description: 'Anticipated date for public release (YYYY-MM-DD).'
+        }
+      }
+      // additionalProperties: false
+    },
+    descriptions: {
+      type: 'array',
+      description: 'multi-lingual description of the vulnerability',
+      minItems: 1,
+      uniqueItems: true,
+      items: {
+        type: 'object',
+        description: '',
+        properties: {
+          lang: {
+            type: 'string',
+            description: 'ISO 639-2 language code',
+            default: 'EN',
+            minLength: 1
+          },
+          value: {
+            type: 'string',
+            description: 'Description of the vulnerability. Eg., [PROBLEMTYPE] in [COMPONENT] in [VENDOR] [PRODUCT] [VERSION] allows [ATTACKER] to [IMPACT] via [VECTOR]. OR [COMPONENT] in [VENDOR] [PRODUCT] [VERSION] [ROOT CAUSE], which allows [ATTACKER] to [IMPACT] via [VECTOR].',
+            minLength: 1
+          }
+        },
+        required: [
+          'lang',
+          'value'
+        ],
+        additionalProperties: false
+      }
     }
-  ]
+  },
+  properties: {
+    data_type: { $ref: '#/definitions/data_type' },
+    data_format: { $ref: '#/definitions/data_format' },
+    data_version: { $ref: '#/definitions/data_version' },
+    CVE_data_meta: { $ref: '#/definitions/CVE_data_meta_reserved' },
+    descriptions: { $ref: '#/definitions/descriptions' }
+  },
+  required: [
+    'data_type',
+    'data_format',
+    'data_version',
+    'CVE_data_meta'
+  ],
+  additionalProperties: false
+}
+
+const rejectSchema = {
+  $schema: 'http://json-schema.org/draft-07/schema#',
+  $id: 'https://cve.mitre.org/cve/v5_00/',
+  type: 'object',
+  title: '',
+  description: 'a CVE entry',
+  definitions: {
+    cve_id: {
+      type: 'string',
+      pattern: '^CVE-[0-9]{4}-[0-9]{4,}$'
+    },
+    email_address: {
+      type: 'string',
+      minLength: 5,
+      pattern: '^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,18})$'
+    },
+    data_type: {
+      type: 'string',
+      enum: [
+        'CVE'
+      ]
+    },
+    data_format: {
+      type: 'string',
+      enum: [
+        'MITRE'
+      ]
+    },
+    data_version: {
+      type: 'string',
+      enum: [
+        '5.0'
+      ]
+    },
+    CVE_data_meta_reject: {
+      type: 'object',
+      description: 'This is meta data about the CVE ID such as the CVE ID, who requested it, who assigned it, when it was requested, when it was assigned, the current state (PUBLIC, REJECT, etc.) and so on.',
+      required: [
+        'ID',
+        'ASSIGNER',
+        'STATE'
+      ],
+      properties: {
+        ID: {
+          $ref: '#/definitions/cve_id'
+        },
+        ASSIGNER: {
+          $ref: '#/definitions/email_address',
+          description: 'the assigner of the CVE (email address)'
+        },
+        STATE: {
+          type: 'string',
+          description: 'State of CVE - PUBLIC, RESERVED, REJECT',
+          enum: [
+            'REJECT'
+          ]
+        }
+      }
+      // additionalProperties: false
+    },
+    descriptions: {
+      type: 'array',
+      description: 'multi-lingual description of the vulnerability',
+      minItems: 1,
+      uniqueItems: true,
+      items: {
+        type: 'object',
+        description: '',
+        properties: {
+          lang: {
+            type: 'string',
+            description: 'ISO 639-2 language code',
+            default: 'EN',
+            minLength: 1
+          },
+          value: {
+            type: 'string',
+            description: 'Description of the vulnerability. Eg., [PROBLEMTYPE] in [COMPONENT] in [VENDOR] [PRODUCT] [VERSION] allows [ATTACKER] to [IMPACT] via [VECTOR]. OR [COMPONENT] in [VENDOR] [PRODUCT] [VERSION] [ROOT CAUSE], which allows [ATTACKER] to [IMPACT] via [VECTOR].',
+            minLength: 1
+          }
+        },
+        required: [
+          'lang',
+          'value'
+        ],
+        additionalProperties: false
+      }
+    }
+  },
+  properties: {
+    data_type: { $ref: '#/definitions/data_type' },
+    data_format: { $ref: '#/definitions/data_format' },
+    data_version: { $ref: '#/definitions/data_version' },
+    CVE_data_meta: { $ref: '#/definitions/CVE_data_meta_reject' },
+    descriptions: { $ref: '#/definitions/descriptions' }
+  },
+  required: [
+    'data_type',
+    'data_format',
+    'data_version',
+    'CVE_data_meta'
+  ],
+  additionalProperties: false
 }
 
 module.exports = {
-  cveSchema5
+  publicSchema,
+  reservedSchema,
+  rejectSchema
 }
