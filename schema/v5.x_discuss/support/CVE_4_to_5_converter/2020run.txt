@@ -1,0 +1,63 @@
+START processing directory:  orig\2020
+FINISHED processed directory orig\2020
+
+PROBLEM FILE REPORT
+All JSON files converted.
+
+Extra keys encountered
+PUBLIC
+     timeline
+
+Saw STATEs
+PUBLIC
+RESERVED
+REJECT
+
+
+Detailed Extra keys encountered
+PUBLIC
+{   'timeline': [   'CVE-2020-1978',
+                    'CVE-2020-1979',
+                    'CVE-2020-1980',
+                    'CVE-2020-1981',
+                    'CVE-2020-1984',
+                    'CVE-2020-1985',
+                    'CVE-2020-1986',
+                    'CVE-2020-1987',
+                    'CVE-2020-1988',
+                    'CVE-2020-1989',
+                    'CVE-2020-1990',
+                    'CVE-2020-1992',
+                    'CVE-2020-1993',
+                    'CVE-2020-1994',
+                    'CVE-2020-1995',
+                    'CVE-2020-1996',
+                    'CVE-2020-1997',
+                    'CVE-2020-1998',
+                    'CVE-2020-2001',
+                    'CVE-2020-2002',
+                    'CVE-2020-2003',
+                    'CVE-2020-2004',
+                    'CVE-2020-2005',
+                    'CVE-2020-2006',
+                    'CVE-2020-2007',
+                    'CVE-2020-2008',
+                    'CVE-2020-2009',
+                    'CVE-2020-2010',
+                    'CVE-2020-2011',
+                    'CVE-2020-2012',
+                    'CVE-2020-2013',
+                    'CVE-2020-2014',
+                    'CVE-2020-2015',
+                    'CVE-2020-2016',
+                    'CVE-2020-2017',
+                    'CVE-2020-2018',
+                    'CVE-2020-2027',
+                    'CVE-2020-2028',
+                    'CVE-2020-2029',
+                    'CVE-2020-2032',
+                    'CVE-2020-2033']}
+
+
+
+Done
