@@ -674,7 +674,7 @@
             "type": "object",
             "description": "This is impact type information (e.g. a text description",
             "required": [
-               "description"
+               "descriptions"
             ],
             "properties": {
                "CAPEC-ID": {
