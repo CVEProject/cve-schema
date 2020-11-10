@@ -89,28 +89,9 @@
       "product": {
          "type": "object",
          "description": "",
-         "anyOf": [
-            {
-               "required": [
-                  "product_name",
-                  "versions"
-               ]
-            },
-            {
-               "required": [
-                  "product_name",
-                  "versions",
-                  "package_name"
-               ]
-            },
-            {
-               "required": [
-                  "product_name",
-                  "versions",
-                  "package_name",
-                  "package_ecosystem"
-               ]
-            }
+         "required": [
+            "product_name",
+            "versions"
          ],
          "properties": {
             "product_name": {
@@ -120,7 +101,7 @@
             },
             "collectionURL": {
                "type": "string",
-               "description": "A URL that, among the users of the software package collection, is considered the most popular starting point for accessing the collection.",
+               "description": "A URL that, among the users of the software package collection, is considered the most popular starting point for accessing the collection (optional).",
                "maxLength": 500,
                "minLength": 5,
                "pattern": "^(ftp|http)s?://\\S+$"
