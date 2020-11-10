@@ -130,7 +130,7 @@
             },
             "programRoutine": {
                "type": "string",
-               "description": "Name of the affected source code file, function, method, subroutine, or procedure (optional)."
+               "description": "Name of the affected source code file, function, method, subroutine, or procedure (optional).",
                "minLength": 1
             },
             "package_name": {
