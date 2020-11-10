@@ -120,7 +120,7 @@
             },
             "module": {
                "type": "string",
-               "description": "Name of the affected component, feature, module, sub-component, sub-product, API, command, utility, program, or functionality (optional)."
+               "description": "Name of the affected component, feature, module, sub-component, sub-product, API, command, utility, program, or functionality (optional).",
                "minLength": 1
             },
             "programFile": {
