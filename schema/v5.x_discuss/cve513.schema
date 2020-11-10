@@ -188,7 +188,7 @@
                   "properties": {
                      "versionName": {
                         "type": "string",
-                        "description": "A name of the version branch, group, or a major version (e.g. 10.0, 3.1.*), where all version values are typically sequential or version_affected comparions are meaningful (optional).",
+                        "description": "A name of the version branch, group, or a major version (e.g. 10.0, 3.1.*) where all version values are typically sequential or version_affected comparisons are meaningful (optional).",
                         "minLength": 1
                      },                     
                      "version_value": {
