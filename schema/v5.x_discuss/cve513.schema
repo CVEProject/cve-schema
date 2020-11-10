@@ -118,20 +118,35 @@
                "description": "Name of the affected product.",
                "minLength": 1
             },
-            "module": {
-               "type": "string",
-               "description": "Name of the affected component, feature, module, sub-component, sub-product, API, command, utility, program, or functionality (optional).",
-               "minLength": 1
+            "modules": {
+               "type": "array",
+               "description": "A list of the affected components, features, modules, sub-components, sub-products, APIs, commands, utilities, programs, or functionalities (optional)",
+               "uniqueItems": true,
+               "items": {
+                  "type": "string",
+                  "description": "Name of the affected component, feature, module, sub-component, sub-product, API, command, utility, program, or functionality (optional).",
+                  "minLength": 1
+               }
             },
-            "programFile": {
-               "type": "string",
-               "description": "Name of the affected source code file (optional)",
-               "minLength": 1
+            "programFiles": {
+               "type": "array",
+               "description": "A list of the affected source code files (optional)",
+               "uniqueItems": true,
+               "items": {
+                  "type": "string",
+                  "description": "Name of the affected source code file (optional)",
+                  "minLength": 1
+               }
             },
-            "programRoutine": {
-               "type": "string",
-               "description": "Name of the affected source code file, function, method, subroutine, or procedure (optional).",
-               "minLength": 1
+            "programRoutines": {
+               "type": "array",
+               "description": "A list of the affected source code functions, methods, subroutines, or procedures (optional).",
+               "uniqueItems": true,
+               "items": {
+                  "type": "string",
+                  "description": "Name of the affected source code file, function, method, subroutine, or procedure (optional).",
+                  "minLength": 1
+               }
             },
             "package_name": {
                "type": "string",
