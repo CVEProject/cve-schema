@@ -126,7 +126,7 @@
             "programFile": {
                "type": "string",
                "description": "Name of the affected source code file (optional)"
-               "minLength":1
+               "minLength": 1
             },
             "programRoutine": {
                "type": "string",
