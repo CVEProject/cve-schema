@@ -104,7 +104,7 @@
                "description": "A URL that, among the users of the software package collection, is considered the most popular starting point for accessing the collection (optional).",
                "maxLength": 500,
                "minLength": 5,
-               "pattern": "^(ftp|http)s?://\\S+$"
+               "pattern": "^(ftp|http)s?://\\S+$",
                "examples": [
                   "https://access.redhat.com/downloads/content/package-browser",
                   "https://addons.mozilla.org",
