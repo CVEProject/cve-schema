@@ -22,7 +22,7 @@
                "maxLength": 500,
                "minLength": 1
             },
-            "refsource": {
+            "refSource": {
                "type": "string",
                "maxLength": 500,
                "minLength": 1,
@@ -58,19 +58,19 @@
             }
          }
       },
-      "cve_id": {
+      "cveId": {
          "type": "string",
          "pattern": "^CVE-[0-9]{4}-[0-9]{4,}$"
       },
-      "org_id": {
+      "orgId": {
          "type": "string",
          "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"
       },
-      "user_id": {
+      "userId": {
          "type": "string",
          "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"
       },
-      "short_name": {
+      "shortName": {
           "type": "string",
           "minLength": 3,
           "maxLength": 12
@@ -90,11 +90,11 @@
          "type": "object",
          "description": "",
          "required": [
-            "product_name",
+            "productName",
             "versions"
          ],
          "properties": {
-            "product_name": {
+            "productName": {
                "type": "string",
                "description": "Name of the affected product.",
                "minLength": 1
@@ -104,7 +104,7 @@
                "description": "A URL that, among the users of the software package collection, is considered the most popular starting point for accessing the collection (optional).",
                "maxLength": 500,
                "minLength": 5,
-               "pattern": "^(ftp|http)s?://\\S+$"
+               "pattern": "^(ftp|http)s?://\\S+$",
                "examples": [
                   "https://access.redhat.com/downloads/content/package-browser",
                   "https://addons.mozilla.org",
@@ -180,17 +180,17 @@
                   "type": "object",
                   "description": "Affected/non-affected/fixed versions of a given technology, product, hardware, etc.",
                   "required": [
-                     "version_value"
+                     "versionValue"
                   ],
                   "properties": {
-                     "version_value": {
+                     "versionValue": {
                         "type": "string",
                         "description": "The version name/value (e.g. 10.0, 3.1, \"IceHouse\")",
                         "minLength": 1
                      },
-                     "version_affected": {
+                     "versionAffected": {
                         "type": "string",
-                        "description": "A string value:\n \"=\" (affects version_value),\n \">\" (affects versions prior to version_value),\n \">\" (affects versions later than version_value),\n \"<=\" (affects version_value and prior versions),\n \">=\" (affects version_value and later versions),\n \"!\" (doesn't affect version_value),\n \"!<\" (doesn't affect versions prior to version_value),\n \"!>\" (doesn't affect versions later than version_value),\n \"!<=\" (doesn't affect version_value and prior versions),\n \"!>=\" (doesn't affect version_value and later versions),\n \"?\" (status of version_value is unknown),\n \"?<\" (status of versions prior to version_value is unknown),\n \"?>\" (status of versions later than version_value is unknown),\n \"?<=\" (status of version_value and prior versions is unknown),\n \"?>=\" (status of version_value and later versions is unknown)",
+                        "description": "A string value:\n \"=\" (affects versionValue),\n \">\" (affects versions prior to versionValue),\n \">\" (affects versions later than versionValue),\n \"<=\" (affects versionValue and prior versions),\n \">=\" (affects versionValue and later versions),\n \"!\" (doesn't affect versionValue),\n \"!<\" (doesn't affect versions prior to versionValue),\n \"!>\" (doesn't affect versions later than versionValue),\n \"!<=\" (doesn't affect versionValue and prior versions),\n \"!>=\" (doesn't affect versionValue and later versions),\n \"?\" (status of versionValue is unknown),\n \"?<\" (status of versions prior to versionValue is unknown),\n \"?>\" (status of versions later than versionValue is unknown),\n \"?<=\" (status of versionValue and prior versions is unknown),\n \"?>=\" (status of versionValue and later versions is unknown)",
                         "enum": [
                            "=",
                            "<",
@@ -217,81 +217,81 @@
             }
          }
       },
-      "data_type": {
+      "dataType": {
          "type": "string",
          "enum": [
             "CVE"
          ]
       },
-      "data_format": {
+      "dataFormat": {
          "type": "string",
          "enum": [
             "MITRE"
          ]
       },
-      "data_version": {
+      "dataVersion": {
          "type": "string",
          "enum": [
             "5.0"
          ]
       },
-      "CVE_data_meta_public": {
+      "cveDataMetaPublic": {
          "type": "object",
          "description": "This is meta data about the CVE ID such as the CVE ID, who requested it, who assigned it, when it was requested, when it was assigned, the current state (PUBLIC, REJECT, etc.) and so on.",
          "required": [
-            "ID",
-            "ASSIGNER",
-            "STATE"
+            "id",
+            "assigner",
+            "state"
          ],
          "properties": {
-            "ID": {
-               "$ref": "#/definitions/cve_id"
+            "id": {
+               "$ref": "#/definitions/cveId"
             },
-            "ASSIGNER": {
-               "$ref": "#/definitions/org_id",
+            "assigner": {
+               "$ref": "#/definitions/orgId",
                "description": "the UUID for the organization to which the CVE ID was originally assigned"
             },
-            "ASSIGNER_SHORT_NAME": {
-               "$ref": "#/definitions/short_name",
+            "assignerShortName": {
+               "$ref": "#/definitions/shortName",
                "description": "the short name for the organization to which the CVE ID was originally assigned"
             },
-            "REQUESTER": {
-               "$ref": "#/definitions/user_id",
+            "requester": {
+               "$ref": "#/definitions/userId",
                "description": " the requester of the CVE"
             },
-            "UPDATED": {
+            "updated": {
                "$ref": "#/definitions/timestamp"
             },
-            "SERIAL": {
+            "serial": {
                "type": "integer",
                "minimum": 1,
                "description": "starts at 1, add 1 every time an entry is updated or changed"
             },
-            "DATE_REQUESTED": {
+            "dateRequested": {
                "$ref": "#/definitions/timestamp",
                "description": "the date/time this issue was requested"
             },
-            "DATE_ASSIGNED": {
+            "dateAssigned": {
                "$ref": "#/definitions/timestamp",
                "description": "the date/time this was assigned"
             },
-            "DATE_PUBLIC": {
+            "datePublic": {
                "$ref": "#/definitions/timestamp",
                "description": "the date/time this went public if known"
             },
-            "REPLACED_BY": {
+            "replacedBy": {
                "type": "string",
                "description": "a single CVE ID or list of CVE IDs (comma separated)",
                "pattern": "^(CVE-[0-9]{4}-[0-9]{4,})\\s*(,\\s*CVE-[0-9]{4}-[0-9]{4,})*$"
             },
-            "STATE": {
+            "state": {
                "type": "string",
                "description": "State of CVE - PUBLIC, RESERVED, REJECT",
                "enum": [
                   "PUBLIC"
                ]
             },
-            "TITLE": {
+            "title": {
                "type": "string",
                "description": "Short title - if the description is long we may want a short title to refer to",
                "minLength": 1
@@ -299,33 +299,33 @@
          },
          "additionalProperties": false
       },
-      "CVE_data_meta_reserved": {
+      "cveDataMetaReserved": {
          "type": "object",
          "description": "This is meta data about the CVE ID such as the CVE ID, who requested it, who assigned it, when it was requested, when it was assigned, the current state (PUBLIC, REJECT, etc.) and so on.",
          "required": [
-            "ID",
-            "STATE"
+            "id",
+            "state"
          ],
          "properties": {
-            "ID": {
-               "$ref": "#/definitions/cve_id"
+            "id": {
+               "$ref": "#/definitions/cveId"
             },
-            "ASSIGNER": {
-               "$ref": "#/definitions/org_id",
+            "assigner": {
+               "$ref": "#/definitions/orgId",
                "description": "the UUID for the organization to which the CVE ID was originally assigned"
             },
-            "ASSIGNER_SHORT_NAME": {
-               "$ref": "#/definitions/short_name",
+            "assignerShortName": {
+               "$ref": "#/definitions/shortName",
                "description": "the short name for the organization to which the CVE ID was originally assigned"
             },
-            "STATE": {
+            "state": {
                "type": "string",
                "description": "State of CVE - PUBLIC, RESERVED, REJECT",
                "enum": [
                   "RESERVED"
                ]
             },
-            "DATE_PUBLIC": {
+            "datePublic": {
                "$ref": "#/definitions/datestamp",
                "description": "Anticipated date for public release (YYYY-MM-DD)."
             },
@@ -335,27 +335,27 @@
          },
          "additionalProperties": false
       },
-      "CVE_data_meta_reject": {
+      "cveDataMetaReject": {
          "type": "object",
          "description": "This is meta data about the CVE ID such as the CVE ID, who requested it, who assigned it, when it was requested, when it was assigned, the current state (PUBLIC, REJECT, etc.) and so on.",
          "required": [
-            "ID",
-            "ASSIGNER",
-            "STATE"
+            "id",
+            "assigner",
+            "state"
          ],
          "properties": {
-            "ID": {
-               "$ref": "#/definitions/cve_id"
+            "id": {
+               "$ref": "#/definitions/cveId"
             },
-            "ASSIGNER": {
-               "$ref": "#/definitions/org_id",
+            "assigner": {
+               "$ref": "#/definitions/orgId",
                "description": "the UUID for the organization to which the CVE ID was originally assigned"
             },
-            "ASSIGNER_SHORT_NAME": {
-               "$ref": "#/definitions/short_name",
+            "assignerShortName": {
+               "$ref": "#/definitions/shortName",
                "description": "the short name for the organization to which the CVE ID was originally assigned"
             },
-            "STATE": {
+            "state": {
                "type": "string",
                "description": "State of CVE - PUBLIC, RESERVED, REJECT",
                "enum": [
@@ -368,32 +368,32 @@
          },
          "additionalProperties": false
       },
-      "provider_data_meta": {
+      "providerDataMeta": {
          "type": "object",
          "description": "will be updated to coordinate with CVE user registry, current identifier is an email address.",
          "properties": {
-            "ID": {
-               "$ref": "#/definitions/org_id",
+            "id": {
+               "$ref": "#/definitions/orgId",
                "description": "the container provider's organizational UUID"
             },
-            "SHORT_NAME": {
-               "$ref": "#/definitions/short_name",
+            "shortName": {
+               "$ref": "#/definitions/shortName",
                "description": "the container provider's organizational short name"
             },
-            "UPDATED": {
+            "updated": {
                "$ref": "#/definitions/timestamp",
                "description": "Timestamp to be set by system of record at time of submission. If  UPDATED is provided to the system of record it will be replaced by the timestamp at the time of submission. If a provider has multiple contributions, they shall be consolidated to a final single contribution before submission, or the system of record will reject the input with, Rejected – simultaneous contributions by a single provider."
             }
          },
          "required": [
-            "ID"
+            "id"
          ]
       },
-      "cna-container": {
+      "cnaContainer": {
          "type": "object",
          "properties": {
-            "provider_data_meta": {
-               "$ref": "#/definitions/provider_data_meta"
+            "providerDataMeta": {
+               "$ref": "#/definitions/providerDataMeta"
             },
             "descriptions": {
                "$ref": "#/definitions/descriptions"
@@ -401,8 +401,8 @@
             "affected": {
                "$ref": "#/definitions/affected"
             },
-            "problemtypes": {
-               "$ref": "#/definitions/problemtypes"
+            "problemTypes": {
+               "$ref": "#/definitions/problemTypes"
             },
             "references": {
                "$ref": "#/definitions/references"
@@ -433,17 +433,17 @@
             }
          },
          "required": [
-            "provider_data_meta",
+            "providerDataMeta",
             "descriptions",
             "affected",
             "references"
          ]
       },
-      "adp-container": {
+      "adpContainer": {
          "type": "object",
          "properties": {
-            "provider_data_meta": {
-               "$ref": "#/definitions/provider_data_meta"
+            "providerDataMeta": {
+               "$ref": "#/definitions/providerDataMeta"
             },
             "descriptions": {
                "$ref": "#/definitions/descriptions"
@@ -483,33 +483,33 @@
             }
          },
          "required": [
-            "provider_data_meta"
+            "providerDataMeta"
          ],
          "minProperties": 2
       },
       "containers": {
          "type": "object",
          "properties": {
-            "CNA": {
-               "$ref": "#/definitions/cna-container"
+            "cna": {
+               "$ref": "#/definitions/cnaContainer"
             },
-            "ADPs": {
+            "adp": {
                "type": "array",
                "items": {
-                  "$ref": "#/definitions/adp-container"
+                  "$ref": "#/definitions/adpContainer"
                },
                "minItems": 1,
                "uniqueItems": true
             }
          },
          "required": [
-             "CNA"
+             "cna"
          ],
          "additionalProperties": false
       },
       "affected": {
          "type": "object",
-         "description": "CVE_affects, there must be at least one defined vulnerable product either in the form of a text description (via data defined in vendors, product, version) OR a affects_CPE OR a affects_SWID",
+         "description": "CVE affects, there must be at least one defined vulnerable product either in the form of a text description (via data defined in vendors, product, version) OR a affectsCpe OR a affectsSwid",
          "anyOf": [
             {
                "required": [
@@ -518,12 +518,12 @@
             },
             {
                "required": [
-                  "affects_CPE"
+                  "affectsCpe"
                ]
             },
             {
                "required": [
-                  "affects_SWID"
+                  "affectsSwid"
                ]
             }
          ],
@@ -537,11 +537,11 @@
                   "type": "object",
                   "description": "",
                   "required": [
-                     "vendor_name",
+                     "vendorName",
                      "products"
                   ],
                   "properties": {
-                     "vendor_name": {
+                     "vendorName": {
                         "type": "string",
                         "description": "Name of the vendor that produced this product.",
                         "minLength": 1
@@ -558,9 +558,9 @@
                   }
                }
             },
-            "affects_CPE": {
+            "affectsCpe": {
                "type": "array",
-               "description": "Affected products defined by CPE. This is an array of CPE values (vulnerable and not), we use an array so that we can make multiple statements about the same version and they are separate (if we used a JSON object we'd essentially be keying on the CPE name and they would have to overlap). Also this allows things like CVE_data_version or CVE_description to be applied directly to the product entry. This also allows more complex statements such as \"Product X between versions 10.2 and 10.8\" to be put in a machine-readable format. As well since multiple statements can be used multiple branches of the same product can be defined here.",
+               "description": "Affected products defined by CPE. This is an array of CPE values (vulnerable and not), we use an array so that we can make multiple statements about the same version and they are separate (if we used a JSON object we'd essentially be keying on the CPE name and they would have to overlap). Also this allows things like cveDataVersion or cveDescription to be applied directly to the product entry. This also allows more complex statements such as \"Product X between versions 10.2 and 10.8\" to be put in a machine-readable format. As well since multiple statements can be used multiple branches of the same product can be defined here.",
                "minItems": 1,
                "uniqueItems": true,
                "items": {
@@ -570,7 +570,7 @@
                   "minProperties": 1
                }
             },
-            "affects_SWID": {
+            "affectsSwid": {
                "type": "array",
                "description": "",
                "minItems": 1,
@@ -613,7 +613,7 @@
             "additionalProperties": false
          }
       },
-      "problemtypes": {
+      "problemTypes": {
          "type": "array",
          "description": "This is problem type information (e.g. CWE identifier). Must contain: At least one entry, can be text, OWASP, CWE, please note that while only one is required you can use more than one (or indeed all three) as long as they are correct). (CNA requirement: [PROBLEMTYPE])",
          "items": {
@@ -640,12 +640,12 @@
                         },
                         "description": {
                            "type": "string",
-                           "description": "string description of problem_type, or title from CWE, OWASP",
+                           "description": "string description of problemType, or title from CWE, OWASP",
                            "minLength": 1
                         },
-                        "CWE-ID": {
+                        "cweId": {
                            "type": "string",
-                           "description": "CWE ID of the CWE that best describes this problem_type entry",
+                           "description": "CWE ID of the CWE that best describes this problemType entry",
                            "minLength": 5,
                            "pattern": "^CWE-[0-9]+$"
                         },
@@ -689,9 +689,9 @@
                "descriptions"
             ],
             "properties": {
-               "CAPEC-ID": {
+               "capecId": {
                   "type": "string",
-                  "description": "CAPEC-ID that best relates to this impact",
+                  "description": "CAPEC ID that best relates to this impact",
                   "minLength": 1
                 },
                 "descriptions": {
@@ -712,17 +712,17 @@
             "anyOf": [
                {
                   "required": [
-                     "cvss-v_3_1"
+                     "cvssV3_1"
                   ]
                },
                {
                   "required": [
-                     "cvss-v_3_0"
+                     "cvssV3_0"
                   ]
                },
                {
                   "required": [
-                     "cvss-v_2_0"
+                     "cvssV2_0"
                   ]
                },
                {
@@ -734,7 +734,7 @@
             "properties": {
                "format": {
                   "type": "string",
-                  "descriptions": "Name of the score format. This provides a bit future proofing. Additional properties are not prohibitied, so this will support inclusion of proprietary formats. It also provides an easy future conversion mechanism when future score formats become part of the schema. example: cvss-v_4_4, format = 'cvss-v4_4', other = cvss-v4_4 json object. In the future the other properties can be converted to score properties when they become part of the schema.",
+                  "descriptions": "Name of the score format. This provides a bit future proofing. Additional properties are not prohibitied, so this will support inclusion of proprietary formats. It also provides an easy future conversion mechanism when future score formats become part of the schema. example: cvssV4_4, format = 'cvssV4_4', other = cvssV4_4 json object. In the future the other properties can be converted to score properties when they become part of the schema.",
                   "minLength": 1
                },
                "scenario": {
@@ -743,13 +743,13 @@
                   "description": "Description of the scenario this metrics object applies to. If no specific scenarion is given, GENERAL is used as the default and applies when no more specific metric matches.",
                   "minLength": 1
                },
-               "cvss-v_3_1": {
+               "cvssV3_1": {
                   "$ref": "file:cvss-v3.1.json"
                },
-               "cvss-v_3_0": {
+               "cvssV3_0": {
                   "$ref": "file:cvss-v3.0.json"
                },
-               "cvss-v_2_0": {
+               "cvssV2_0": {
                   "$ref": "file:cvss-v2.0.json"
                },
                "other": {
@@ -776,7 +776,7 @@
       },
       "configurations": {
          "type": "array",
-         "description": "This is configuration information. It is generally meant to contain additional containers (e.g. CVE_description, CVE_impact). Must contain: At least one configuration",
+         "description": "This is configuration information. It is generally meant to contain additional containers (e.g. cveDescription, cveImpact). Must contain: At least one configuration",
          "minItems": 1,
          "uniqueItems": true,
          "items": {
@@ -906,80 +906,80 @@
    "oneOf": [
       {
          "properties": {
-            "data_type": {
-               "$ref": "#/definitions/data_type"
+            "dataType": {
+               "$ref": "#/definitions/dataType"
             },
-            "data_format": {
-               "$ref": "#/definitions/data_format"
+            "dataFormat": {
+               "$ref": "#/definitions/dataFormat"
             },
-            "data_version": {
-               "$ref": "#/definitions/data_version"
+            "dataVersion": {
+               "$ref": "#/definitions/dataVersion"
             },
-            "CVE_data_meta": {
-               "$ref": "#/definitions/CVE_data_meta_public"
+            "cveDataMeta": {
+               "$ref": "#/definitions/cveDataMetaPublic"
             },
             "containers": {
                "$ref": "#/definitions/containers"
             }
          },
          "required": [
-            "data_type",
-            "data_format",
-            "data_version",
-            "CVE_data_meta",
+            "dataType",
+            "dataFormat",
+            "dataVersion",
+            "cveDataMeta",
             "containers"
          ],
          "additionalProperties": false
       },
       {
          "properties": {
-            "data_type": {
-               "$ref": "#/definitions/data_type"
+            "dataType": {
+               "$ref": "#/definitions/dataType"
             },
-            "data_format": {
-               "$ref": "#/definitions/data_format"
+            "dataFormat": {
+               "$ref": "#/definitions/dataFormat"
             },
-            "data_version": {
-               "$ref": "#/definitions/data_version"
+            "dataVersion": {
+               "$ref": "#/definitions/dataVersion"
             },
-            "CVE_data_meta": {
-               "$ref": "#/definitions/CVE_data_meta_reserved"
+            "cveDataMeta": {
+               "$ref": "#/definitions/cveDataMetaReserved"
             },
             "descriptions": {
                "$ref": "#/definitions/descriptions"
             }
          },
          "required": [
-            "data_type",
-            "data_format",
-            "data_version",
-            "CVE_data_meta"
+            "dataType",
+            "dataFormat",
+            "dataVersion",
+            "cveDataMeta"
          ],
          "additionalProperties": false
       },
       {
          "properties": {
-            "data_type": {
-               "$ref": "#/definitions/data_type"
+            "dataType": {
+               "$ref": "#/definitions/dataType"
             },
-            "data_format": {
-               "$ref": "#/definitions/data_format"
+            "dataFormat": {
+               "$ref": "#/definitions/dataFormat"
             },
-            "data_version": {
-               "$ref": "#/definitions/data_version"
+            "dataVersion": {
+               "$ref": "#/definitions/dataVersion"
             },
-            "CVE_data_meta": {
-               "$ref": "#/definitions/CVE_data_meta_reject"
+            "cveDataMeta": {
+               "$ref": "#/definitions/cveDataMetaReject"
             },
             "descriptions": {
                "$ref": "#/definitions/descriptions"
             }
          },
          "required": [
-            "data_type",
-            "data_format",
-            "data_version",
-            "CVE_data_meta"
+            "dataType",
+            "dataFormat",
+            "dataVersion",
+            "cveDataMeta"
          ],
          "additionalProperties": false
       }
