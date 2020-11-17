@@ -133,8 +133,8 @@
                "description": "A list of the affected source code files (optional)",
                "uniqueItems": true,
                "items": {
-                  "type": "string",
-                  "description": "Name of the affected source code file (optional)",
+                  "type": "uri",
+                  "description": "Name or path or location of the affected source code file in RFC3986 compliant format (optional).",
                   "minLength": 1
                }
             },
@@ -201,9 +201,9 @@
                      "version_value"
                   ],
                   "properties": {
-                     "versionName": {
+                     "versionGroup": {
                         "type": "string",
-                        "description": "A name of the version branch, group, or a major version (e.g. 10.0, 3.1.*) where all version values are typically sequential or version_affected comparisons are meaningful (optional).",
+                        "description": "A string that represents a version branch, group, or a major version (e.g. 10.0, 3.1.*) where all version values are typically sequential or versionAffected comparisons are meaningful (optional).",
                         "minLength": 1
                      },                     
                      "version_value": {
