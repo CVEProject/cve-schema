@@ -129,11 +129,6 @@
                   "minLength": 1
                }
             },
-            "packageName": {
-               "type": "string",
-               "description": "Name of the affected software package, if it exists.",
-               "minLength": 1
-            },
             "collectionURL": {
                "type": "string",
                "description": "A URL that, among the users of the software package collection, is considered the most popular starting point for accessing the collection (optional).",
