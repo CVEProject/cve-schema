@@ -1,0 +1,1 @@
+The files in this folder are included here as a stable mirror of the CVSS JSON schemas [maintained](https://www.first.org/cvss/data-representations) by the [Forum of Incident Response and Security Teams](https://www.first.org/) (FIRST).
