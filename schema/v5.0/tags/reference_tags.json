@@ -1,0 +1,25 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://cve.mitre.org/cve/v5_00/",
+    "type": "string",
+    "enum": [
+        "broken-link",
+        "customer-entitlement",
+        "exploit",
+        "government-resource",
+        "issue-tracking",
+        "mailing-list",
+        "mitigation",
+        "not-applicable",
+        "patch",
+        "permissions-required",
+        "media-coverage",
+        "product",
+        "release-notes",
+        "signature",
+        "technical-description",
+        "third-party-advisory",
+        "vendor-advisory",
+        "vdb-entry"
+    ]
+}
