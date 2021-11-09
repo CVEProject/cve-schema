@@ -1,0 +1,49 @@
+{
+    "dataType": "CVE",
+    "dataFormat": "MITRE",
+    "dataVersion": "5.0",
+    "cveDataMeta": {
+        "cveId": "CVE-1000-1234",
+        "assignerOrgId": "f87d6f0b-e0a2-4577-95a0-390f50df3fb5",
+        "state": "PUBLIC"
+    },
+    "containers": {
+        "cna": {
+            "providerDataMeta": {"orgId": "f87d6f0b-e0a2-4577-95a0-390f50df3fb5"},
+            "descriptions": [
+                {
+                    "lang": "en-US",
+                    "value": "A test description."
+                }
+            ],
+            "affected": {
+                "vendors": [
+                    {
+                        "vendorName": "test",
+                        "products": [
+                            {
+                                "productName": "foo",
+                                "versions": [
+                                    {"versionValue": "1.0"}
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            "metrics": [
+                {
+                    "cvssV3_1": {
+                        "version": "3.1",
+                        "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
+                        "baseScore": 5.5,
+                        "baseSeverity": "MEDIUM"
+                    }
+                }
+            ],
+            "references": [
+                {"url": "https://github.com/CVEProject/cve-schema/"}
+            ]
+        }
+    }
+}
