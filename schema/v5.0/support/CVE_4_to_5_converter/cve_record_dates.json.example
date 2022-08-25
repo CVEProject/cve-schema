@@ -1,0 +1,42 @@
+[
+	{
+		"cve_identifier" : "CVE-2010-0001",
+		"reserved_date" : "2010-06-07",
+		"disclosure_date" : null,
+		"populated_date" : "2010-08-08 05:00:00.000000",
+		"history_date" : "2010-12-17 00:00:00.000000",
+		"HType" : "Modified"
+	},
+	{
+		"cve_identifier" : "CVE-1999-7001",
+		"reserved_date" : "1999-06-07",
+		"disclosure_date" : null,
+		"populated_date" : "2000-06-04 05:00:00.000000",
+		"history_date" : "2005-11-12 00:00:00.000000",
+		"HType" : "Modified"
+	},
+	{
+		"cve_identifier" : "CVE-2001-2001",
+		"reserved_date" : "2001-06-07",
+		"disclosure_date" : null,
+		"populated_date" : "2002-02-04 05:00:00.000000",
+		"history_date" : "2007-12-17 00:00:00.000000",
+		"HType" : "Modified"
+	},
+	{
+		"cve_identifier" : "CVE-2008-3001",
+		"reserved_date" : "2008-06-07",
+		"disclosure_date" : null,
+		"populated_date" : "2009-02-04 05:00:00.000000",
+		"history_date" : "2008-03-21 10:00:00.000000",
+		"HType" : "Modified"
+	},
+	{
+		"cve_identifier" : "CVE-2003-6001",
+		"reserved_date" : "2003-06-07",
+		"disclosure_date" : null,
+		"populated_date" : "2004-02-04 05:00:00.000000",
+		"history_date" : "2003-07-28 00:00:00.000000",
+		"HType" : "Proposed"
+	}
+]
