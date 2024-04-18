@@ -1,0 +1,27 @@
+{
+  "name": "schema2markmap",
+  "version": "1.0.0",
+  "description": "Convert CVE JSON schema to a Mardkdown document suitable for use with Markmap.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CVEProject/cve-schema/tree/master/schema/v5.0/support"
+  },
+  "keywords": [
+    "JSON",
+    "Schema",
+    "Markdown",
+    "Markmap"
+  ],
+  "author": "Chandan B.N.",
+  "license": "CC0-1.0",
+  "dependencies": {
+    "@cloudflare/json-schema-walker": "^0.1.1",
+    "json-schema-ref-parser": "^9.0.9",
+    "markmap-lib": "^0.11.6",
+    "markmap-view": "^0.2.6"
+  }
+}
