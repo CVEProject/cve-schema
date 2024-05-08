@@ -1,0 +1,37 @@
+{
+	"data_version": "3.1",
+	"cve_id":"CVE-YYYY-XXXXXX",
+	"products": [
+      {
+        "vendor_name": "string",
+        "product": [
+          {
+            "product_name": "string",
+            "version": "string",
+            "affects": "string =/>/</<=/>=/!"
+          }
+        ]
+      }
+    ],
+	"problem_types":[
+		{
+			"description":[
+				{
+					"lang":"string ISO 639-2",
+					"value":"string description of problem_type"
+				}
+			]
+		}
+	],
+	"references":[
+		{
+			"url":"string for url location"
+		}
+	],
+	"description":[
+		{
+			"lang":"string ISO 639-2",
+			"value":"string description of vulnerability"
+		}
+	]
+}
