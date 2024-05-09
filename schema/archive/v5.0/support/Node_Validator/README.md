@@ -1,0 +1,68 @@
+# This is a json validator for the JSON schema v5.0
+
+## Usage
+
+##### 1. Download and install [node.js](https://nodejs.org/en/download/)
+
+##### 2. Go to the node validator
+
+```
+    cd cve_json_schema/v5.x_discuss/support/Node_Validator
+```
+
+##### 3. Run validator in CLI
+
+To validate one or more files
+<pre>
+
+   $ <b>node validate.js <i>file-1.json</i> <i>file-2.json</i></b> ... 
+   file-1.json is valid.
+   file-2.json is invalid!
+   Summary: Validation FAILED for 1 out of 2 files!.
+
+</pre>
+
+To validate a list of files in a file or on stdin:
+<pre>
+   $ cat list.txt | node validate.js -e 
+
+   $ <b>find directory1 -name '*.json' | node validate.js -e</b>
+   directory1/file1.json is valid.
+   Summary: All files PASSED validation.
+</pre>
+
+To validate a single file via stdin:
+```
+  $ cat file.json | node validate.js
+```
+
+##### 4. Use validator in a NodeJS program
+
+```
+const validateCve = require('./dist/cve5validator.js')
+
+if (validateCve(cveJsonObject)) {
+    // cveJsonObject is valid
+} else {
+    // cveJsonObject is invalid. Errors are in validateCve.errors
+}
+
+```
+
+##### 5. Generate a HTML report of validation
+
+```
+  $ find directory1 -name '*.json' | node reportValidation.js > output.html 
+```
+
+Example report https://chandanbn.github.io/notes/cve5-validation-errors-Jan26.html
+
+##### 6. Development: Build the standalone validator library dist/cve5validator.js compiled from bundled CVE JSON schema.
+
+```
+    $ npm install
+    $ node build.js
+```
+
+This creates standalone validator module at ./dist/cve5validator.js based on the bundled CVE JSON schema.
+When the schema is updated, a new validator module needs to be built using build.js.

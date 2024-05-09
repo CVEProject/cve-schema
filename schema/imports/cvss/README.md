@@ -1,0 +1,1 @@
+ATTENTION: The files in this folder are local modified versions of the CVSS JSON schemas [maintained](https://www.first.org/cvss/data-representations) by the [Forum of Incident Response and Security Teams](https://www.first.org/) (FIRST). Changes have been made to correct bug fixes in certain validators and to provide additional validation in older cvss schemas.
